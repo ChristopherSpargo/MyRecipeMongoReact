@@ -1,0 +1,36 @@
+{
+  "name": "myrecipemongo",
+  "version": "0.1.0",
+  "private": true,
+  "homepage": "http://myrecipemongo.com.s3-website-us-west-2.amazonaws.com",
+  "dependencies": {
+    "@uirouter/react": "^0.6.2",
+    "@xkeshi/image-compressor": "^0.5.3",
+    "gulp": "^3.9.1",
+    "mobx": "^4.1.0",
+    "mobx-react": "^5.0.0",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0"
+  },
+  "scripts": {
+    "start": "react-scripts-ts start",
+    "build": "react-scripts-ts build",
+    "test": "react-scripts-ts test --env=jsdom",
+    "eject": "react-scripts-ts eject"
+  },
+  "devDependencies": {
+    "@types/jest": "^22.2.0",
+    "@types/node": "^9.4.7",
+    "@types/react": "^16.0.40",
+    "@types/react-dom": "^16.0.4",
+    "autoprefixer": "^8.2.0",
+    "css-mqpacker": "^6.0.2",
+    "cssnano": "^3.10.0",
+    "gulp-postcss": "^7.0.1",
+    "gulp-rename": "^1.2.2",
+    "mobx-devtools": "^0.9.14",
+    "precss": "^2.0.0",
+    "react-scripts-ts": "2.14.0",
+    "typescript": "^2.7.2"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "short_name": "MyRecipeMongo",
+  "name": "MyRecipeMongo",
+  "icons": [
+    {
+      "src": "cards2.png",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/icon"
+    }
+  ],
+  "start_url": "./index.html",
+  "display": "standalone",
+  "theme_color": "#666666",
+  "background_color": "#ffffff"
+}

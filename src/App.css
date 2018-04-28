@@ -1,0 +1,1817 @@
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;}
+/*********************************************/
+/* STYLES MOSTLY RELATED TO: GENERAL STYLING */
+/*********************************************/
+/* z-index: assignments:
+    print container          ... -20
+    main background image    ... -10
+    main background dim      ... -9
+    form inputs              ... 2
+    slide right windows      ... 3
+    slide left windows       ... 4
+    slideout click-to-close  ... 10
+    slide-down menu          ... 60
+    main toolbar             ... 75
+    recipe tab set           ... 1000
+    about click-to-close     ... 1100
+    about container          ... 1110
+    category list container  ... 1110
+*/
+$xl-screen: (min-width: 1200px);
+$lg-screen: (min-width: 992px);
+$md-screen: (min-width: 768px);
+$sm-screen: (min-width: 576px);
+$xs-screen: (max-width: 576px);
+$modalActionBackground: transparent;
+$courtGreenLight: rgb(109, 149, 106);
+$helpHeaderColor: #5bc0de;
+/* $helpHeaderColor: rgba(156, 39, 176, 1); */
+$appBarIconSize: 30px !important;
+$primaryColor: #1E88E5;
+$secondaryColor: #42A5F5;
+$tertiaryColor: #448AFF;
+$accentColor1: #FFC107;
+$accentColor2: #4A148C;
+$accentColor3: #BA68C8;
+$warnColor: #E53935;
+$textOnPrimary: white;
+$checkboxColor: #E6B800;
+$blackTextHigh: rgba(0,0,0,.87) !important;
+$blackTextMedium: rgba(0,0,0,.54) !important;
+$blackTextLow: rgba(0,0,0,.38) !important;
+$blackTextDivider: rgba(0,0,0,.12) !important;
+$whiteTextHigh: rgba(255,255,255,1) !important;
+$whiteTextMedium: rgba(255,255,255,.70) !important;
+$whiteTextLow: rgba(255,255,255,.50) !important;
+$disabledTextColor: $blackTextLow;
+$disabledIconColor: $blackTextLow;
+$modalHeaderColor: $tertiaryColor;
+$infoLabelColor: darkslategray;
+$inputLabelColor: lightslategray;
+$headerDefaultBgColor: $primaryColor;
+$headerDefaultColor: $textOnPrimary;
+$toolbarDefaultBgColor: $primaryColor;
+$toolbarDefaultColor: $textOnPrimary;
+$xsFontSize: 16px;
+$smFontSize: 18px;
+$lgFontSize: 20px;
+
+html {
+  position: relative;
+  height: 100%;
+  min-height: 100%;}
+body {
+  position: relative;
+  height: 100%;
+  min-height: 100%;
+  overflow-x: hidden;  
+  margin: 0;
+  padding: 0;
+  font-size: $xsFontSize;}  
+  @media ($sm-screen) {
+    body {
+      font-size: $smFontSize;}}
+  @media ($lg-screen) {
+    body {
+      font-size: $lgFontSize;}}
+.app-container {
+  width: 100%;
+  max-width: 100%;
+  min-height: 100%;
+  overflow-x: hidden;
+}
+.app-bg-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -10;
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-image: url(assets/recipeMeasuring.jpg);
+  background-position: left top;
+  width: 1152px;
+  height: 752px;
+}
+  @media ($md-screen){
+    .app-bg-container {
+      width: 1920px;
+      height: 1254px;}}
+      /* background-size: 100% auto;}}
+  @media (orientation: landscape) {
+    .app-bg-container {
+      background-size: 100% auto;}} */
+.app-background-shadow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: -9;
+  background-color: rgba(0,0,0,.08);}
+  @media ($lg-screen) {
+    .app-background-shadow {
+      background-color: rgba(0,0,0,.25);}}
+.app-main-view {
+/* page content container */
+  height: 100%;
+  background-color: transparent;}
+/*****************************************/
+/* STYLES MOSTLY RELATED TO: FAB BUTTONS */
+/*****************************************/
+.app-fab-button {
+  margin: 0px;
+  padding: 0px;
+  border: 0;
+  cursor: pointer;
+  touch-action: manipulation;
+  max-width: 48px;
+  min-width: 48px;
+  max-height: 48px;
+  min-height: 48px;
+  border-radius: 50%;}
+.app-fab-button-sm {
+  width: 24px;
+  height: 24px;
+  min-width: 24px;
+  min-height: 24px;
+  margin-bottom: 5px;}
+.app-fab-raised {
+  box-shadow: 0 6px 6px 0 rgba(0,0,0,.26);}
+.app-fab-button.app-fab-raised.app-fab-click, .app-fab-button-sq.app-fab-raised.app-fab-click {
+  animation: app-click .3s;}
+@keyframes app-click {
+    0%   {box-shadow: 0 6px 6px 0 rgba(0,0,0,.26);}
+    30%  {box-shadow: 0 0px 1px 0 rgba(0,0,0,.26); transform: scale(.99);}
+    100% {box-shadow: 0 6px 6px 0 rgba(0,0,0,.26);}
+}
+.app-link-btn.app-fab-click {
+  animation: app-link-click .3s;}
+@keyframes app-link-click {
+    0%   {opacity: 1;}
+    50%  {opacity: .6;}
+    100% {opacity: 1;}
+}
+.app-fab-button:focus, .app-fab-button-sq:focus {
+  outline: none;
+  box-shadow: 0 1px 3px 0 rgba(0,0,0,.26);}
+.app-fab-m {
+  max-width: 40px;
+  min-width: 40px;
+  max-height: 40px;
+  min-height: 40px;}
+.app-fab-m-sq {
+  max-height: 40px;
+  min-height: 40px;}
+.app-fab-icon {
+  font-size: 48px;}
+.app-fab-icon-m {
+  font-size: 40px;}
+.app-fab-icon-smm {
+  font-size: 30px;}
+  @media($lg-screen) {
+    .app-fab-icon-smm {
+      font-size: 38px;}}
+.app-fab-sm {
+  max-width: 30px;
+  min-width: 30px;}
+.app-fab-sm-sq {
+  padding: 2px 2px;}
+.app-fab-sm,.app-fab-sm-sq {
+  font-size: 18px !important;
+  max-height: 30px;
+  min-height: 30px;}
+.app-fab-icon-sm {
+  font-size: 24px;}
+.app-fab-xsm {
+  max-width: 24px;
+  min-width: 24px;}
+.app-fab-xsm,.app-fab-xsm-sq {
+  max-height: 24px;
+  min-height: 24px;}
+.app-fab-icon-xxsm {
+  font-size: 16px;}
+.app-fab-lg {
+  max-width: 56px;
+  min-width: 56px;
+  max-height: 56px;
+  min-height: 56px;}
+.app-fab-icon-lg {
+  font-size: 35px;}
+.app-fab-icon-btn-sm {      /* this is for the categories menu trigger fab */
+  font-size: 28px;
+  position: relative;
+  left: -2px;}
+.app-help-btn {
+  transform: scale(.8);}
+  .app-help-btn-container {
+    margin-top: -2px;}
+  .app-help-btn-icon {
+    font-size: 26px;
+    color: $whiteTextMedium;}
+  .app-help-btn-label {
+    color: $whiteTextMedium;}
+
+/* when this is used in the form header we want white */
+  .app-scroll-form-help-icon .app-help-btn-icon,
+  .app-scroll-form-help-icon .app-help-btn-label {
+    color: white;}
+
+.app-help-btn-absolute {
+  transform: scale(.8);
+  position: absolute;
+  left: 0;
+  top: -5px;}
+  @media ($md-screen){
+    .app-help-btn-absolute {
+      top: -2px;}}
+.app-menu-button {
+  margin-bottom: 0 !important;
+  margin-top: 0 !important;
+  text-transform: none;
+  color: inherit;}
+  .app-menu-button:focus {
+  outline: none;
+  box-shadow: none;}
+.app-menu-item-icon {
+  font-size: 30px;
+  margin-right: .25em;}
+.app-menu-item-icon-sm {
+  height: 18px;
+  width: 18px;
+  font-size: 22px;
+  margin: 0 .5em .25em 0;}
+.app-version-logo {
+  height: 24px;
+  width: 24px;
+  margin: 0 .5rem 0 0;}
+  
+/*this needs to be applied to things with -webkit-box-shadow due to ios8 bug */      
+.app-border-radius-hack { 
+  border-radius: 1px;}
+.app-progress-indicator {
+  width: 100px;}
+.app-inherit-z {
+  z-index: inherit;}
+.app-inherit-bc {
+  background-color: inherit;}
+.app-inline-flex {
+  display: inline-flex;}
+.app-invisible {
+  visibility: hidden;}
+.app-visible {
+  visibility: visible;}
+.app-no-display {
+  display: none !important;}
+.app-absolute-0 {
+  position: absolute !important;
+  left: 0;
+  top: 0;}
+.app-top--2 {
+  top: -2px;}
+.app-top--6 {
+  top: -6px;}
+.app-pos-relative {
+  position: relative !important;}
+  .app-pos-absolute {
+    position: absolute !important;}
+  .app-underlined, .app-underlined:hover, .app-underlined:focus {
+  text-decoration: underline;}
+.app-lt-border-right {
+  border-right: 1px solid rgba(255,255,255, 0.19)}
+.app-menu-button {
+  margin-bottom: 0 !important;
+  margin-top: 0 !important;
+  text-transform: none;
+  color: inherit;}
+  .app-menu-button:focus {
+  outline: none;
+  box-shadow: none;}
+.app-menu-item-icon {
+  font-size: 30px;
+  margin-right: .25em;}
+.app-menu-item-icon-sm {
+  height: 18px;
+  width: 18px;
+  font-size: 24px;
+  margin: 0 .5em .25em 0;}
+.app-main-menu-icon {
+  color: $whiteTextMedium;
+  height: .9rem;
+  width: 1rem;
+  font-size: 17px;}
+.app-main-dropdown-icon {
+  color: $whiteTextMedium;
+  height: .9rem;
+  width: 1rem;
+  font-size: 16px;}
+.app-card-corners {
+  border-radius: 3px 3px 3px 3px !important;}
+.app-card-bottom-corners {
+  border-radius: 0px 0px 3px 3px !important;}
+.app-card-top-corners {
+  border-radius: 3px 3px 0px 0px !important;}
+.app-width-10 {
+  flex: 1 1 10%;
+  max-width: 10%;
+  width: 10%;}
+.app-width-15 {
+  flex: 1 1 15%;
+  max-width: 15%;
+  width: 15%;}
+.app-width-33 {
+  flex: 1 1 33%;
+  max-width: 33%;
+  width: 33%;}
+.app-width-35 {
+  flex: 1 1 35%;
+  max-width: 35%;
+  width: 35%;}
+.app-width-45 {
+  flex: 1 1 45%;
+  max-width: 45%;
+  width: 45%;}
+.app-width-50 {
+]  flex: 1 1 50%;
+  max-width: 50%;
+  width: 50%;}
+.app-width-75 {
+  flex: 1 1 75%;
+  max-width: 75%;
+  width: 75%;}
+.app-width-80 {
+  flex: 1 1 80%;
+  max-width: 80%;
+  width: 80%;}
+.app-width-90 {
+  flex: 1 1 90%;
+  max-width: 90%;
+  width: 90%;}
+.app-width-98 {
+  flex: 1 1 98%;
+  max-width: 98%;
+  width: 98%;}
+.app-width-100 {
+  flex: 1 1 100%;
+  max-width: 100%;
+  width: 100%;}
+.app-offset-5 {
+  margin-left: 5%;}
+.app-all-paddings-8px {
+  padding: 8px;}
+.app-mt-2 {
+  margin-top: 2px!important;}
+.app-mb-2 {
+  margin-bottom: 2px!important;}
+.app-mt--2 {
+  margin-top: -2px!important;}
+.app-mt--4 {
+  margin-top: -4px!important;}
+.app-mb--2 {
+margin-bottom: -2px!important;}
+.app-mb--4 {
+  margin-bottom: -4px!important;}
+.app-bt-gray-1px {
+border-top: 1px solid gray;}
+.app-no-overflow {
+  overflow: hidden;}
+.app-no-overflow-x {
+  overflow-x: hidden;}
+.app-slidedown-menu-button {
+  background-color: transparent;
+  border: 0;
+  position: relative;
+  padding: 0;
+  height: 36px!important;
+  width: 36px!important;
+  max-height: 36px!important;
+  max-width: 36px!important;
+  min-height: 36px!important;
+  min-width: 36px!important;}
+.app-slidedown-menu-icon {
+  font-size: 36px;
+  height: 36px!important;
+  width: 36px!important;
+  max-height: 36px!important;
+  max-width: 36px!important;
+  min-height: 36px!important;
+  min-width: 36px!important;
+  display: inline-block!important;}
+.app-bar-feature-icon {
+  font-size: $appBarIconSize;
+  height: $appBarIconSize;
+  width: $appBarIconSize;
+  max-height: $appBarIconSize;
+  max-width: $appBarIconSize;
+  min-height: $appBarIconSize;
+  min-width: $appBarIconSize;
+  color: $textOnPrimary;}
+.app-bar-feature-button {
+  z-index: inherit;
+  background-color: transparent;
+  padding: 0px !important;
+  margin-left: 3%;
+  cursor: pointer;
+  height: $appBarIconSize;
+  width: $appBarIconSize;
+  max-height: $appBarIconSize;
+  max-width: $appBarIconSize;
+  min-height: $appBarIconSize;
+  min-width: $appBarIconSize;}
+  .app-bar-feature-button:focus {
+    outline: none;
+    box-shadow: none;}
+.app-small-font {
+  font-size: 90%;}
+.app-smaller-font {
+  font-size: 75%;}
+.app-smaller-font2 {
+  font-size: 60%;}
+.app-font-normal {
+  font-weight: normal;}
+.app-bigger-font {
+  font-size: 125%;}
+ .app-slide-right {
+  z-index: 3;
+  left: 0px;
+  transition: transform .3s ease-in-out;
+  transform: translateX(-105%);}
+  .app-slide-right.app-open {
+    transform: translateX(0%);}
+.app-slide-left {
+  z-index: 3;
+  right: 0px;
+  transition: transform .3s ease-in-out;
+  transform: translateX(105%);}
+  .app-slide-left.app-open {
+    transform: translateX(0%);}
+.app-expand-open {
+  transition: transform .4s ease-in-out;
+  transform: scale(0);}
+  .app-expand-open.app-open {
+    transform: scale(1);}
+.app-vertical-expand {
+  overflow: hidden;
+  display: block;
+  position: relative;
+  max-height: 0px;
+  opacity: 0;
+  transition: max-height .5s, opacity .3s ease-in;}
+  .app-vertical-expand.app-open {
+    max-height: 200px;
+    opacity: 1;}
+.app-fade-in {
+  transition: opacity .4s ease-in-out;
+  opacity: 0;}
+  .app-fade-in.app-open {
+    opacity: 1;}
+.app-slide-down {
+  right: 0px;
+  transition: transform .5s ease-in-out;
+  transform: translateY(-250%);}
+  .app-slide-down.app-open {
+    transform: translateY(0%);}
+/***************************************/
+/* STYLES MOSTLY RELATED TO: MAIN      */
+/***************************************/
+/* Themes */
+
+.app-toolbar-theme {
+  background-color: $toolbarDefaultBgColor;
+  color: $toolbarDefaultColor !important;} 
+  .app-toolbar-text {
+    color: $toolbarDefaultColor !important;}
+  .app-dropdown-text {
+    color: $toolbarDefaultColor !important;}
+    .app-dropdown-text:hover {
+      background-color: rgba(0,0,0,.35) !important;
+    }
+  .app-dropdown-disabled-text {
+    color: rgba(255,255,255,.75) !important;}
+    .app-dropdown-disabled-text:hover {
+      background-color: transparent !important;}
+  .app-toolbar-submenu-theme {
+    border: 0;
+    background-color: $toolbarDefaultBgColor;
+    color: $toolbarDefaultColor !important;} 
+.app-theme-inherit {
+  background-color: inherit;
+  color: inherit;}
+/* Main header and menus */
+.app-logo-text-container {
+  z-index: inherit;
+  font-family: 'MV Boli';
+  font-style: italic;
+  font-size: 1.2em;
+  padding-left: 5%;
+  padding-right: 3%;
+  margin-top: 0;
+  margin-bottom: 0;}
+.app-logo-text1 {
+  line-height: 1em;}
+.app-logo-text2 {
+  line-height: 1em;}
+.app-main-short-toolbar {
+  position: relative;
+  z-index: 75;
+  min-height: 60px;}
+/*backdrop provides 'click outside' to close feature*/
+.app-click-to-close-slidenav {
+  position: fixed;
+  top: 60px;
+  left: 0;
+  height: calc(100% - 60px);
+  width: 100%;
+  z-index: 10;
+  background-color: transparent;}
+/*slideout trigger icon animation*/
+.app-slide-open-icon {
+  transition: transform .3s ease-out, opacity .3s ease-out;
+  transform: rotate(-90deg);
+  margin-right: 0px !important;
+  opacity: 0;
+  color: inherit;}
+.app-slide-close-icon {
+  transition: transform .3s ease-out, opacity .3s ease-out;
+  transform: rotate(90deg);
+  margin-right: 0px !important;
+  opacity: 0;
+  color: inherit;}
+  .app-slide-open-icon.app-visible,
+  .app-slide-close-icon.app-visible {
+    transform: rotate(0deg);
+    opacity: 1;
+    position: absolute;
+    left: 0px;}
+/*sliding main menu for small devices*/
+.app-slide-menu {
+  position: absolute;
+  z-index: 60;
+  top: 60px;
+  max-height: calc(100% - 60px);}
+.app-slide-menu-ul {
+  width: 100%;
+  list-style: none;
+  padding: 0px!important;
+  margin: 0px!important;}
+  .app-slide-submenu-ul {
+    width: 100%;
+    list-style: none;
+    padding: 0px!important;
+    margin: 0px!important;}
+  .app-slide-menu-listitem {
+  display: block;
+  text-transform: none;
+  text-align: left;
+  padding: 0 8px 0 16px;
+  border-radius: 0px;
+  color: inherit;
+  font-size: 1.1em !important;
+  margin: 0px!important;
+  align-items: center;
+  border-bottom: 1px solid lightgray;
+  width: 100%;
+  background-color: transparent;
+  box-shadow: none !important;
+  line-height: 56px;}
+.app-slide-menu-listitem:hover {
+  background-color: rgba(0,0,0,.15);}
+.app-subitem-spacing {
+  padding-left: 35px;
+  margin-top: 0;
+  margin-bottom: 0;
+  line-height: 40px;
+  height: 40px!important;
+  font-size: 90% !important;}
+.app-mainMenu-item-spacing {
+  margin-right: 0;}
+  @media ($md-screen) {
+    .app-mainMenu-item-spacing {
+      margin-right: 1.5em;}}
+.app-mainMenu-submenu {
+  position: relative;
+  overflow: hidden;
+  background-color: inherit;
+  max-height: 0px;
+  transition: max-height .5s ease-in-out;}
+  .app-mainMenu-submenu.app-open {
+    max-height: 300px;}
+.app-menu-theme {
+  background-color: inherit;
+  font-size: 1.25em;
+  color: $blackTextHigh;
+}
+@media ($md-screen) {
+  .app-slide-menu-listitem {
+    margin-bottom: 0;
+    padding-left: 8px;
+    height: 60px;
+    border-bottom: 0;
+  }
+  .app-slide-menu-ul {
+    max-height: 60px;
+    font-size: .8em !important;
+  }
+  .app-subitem-spacing {
+    padding-left: 24px;
+  }
+  .app-menu-icon-color {
+    color: $textOnPrimary;
+  }
+  .app-menu-theme {
+    color: $textOnPrimary;
+  }
+}
+
+/***************************************/
+/* STYLES MOSTLY RELATED TO: HOME      */
+/***************************************/
+
+/*****************************************/
+/* STYLES MOSTLY RELATED TO: FORMS/CARDS */
+.app-scroll-form-header-icon {
+  position: fixed;
+  background-color: transparent;
+  top: 5px;
+  z-index: 1100;}
+  @media ($md-screen) {
+    .app-scroll-form-header-icon {
+      top: 10px;}}
+.app-header-title-icon {
+  transition: transform .3s ease-out, opacity .3s ease-out;
+  transform: rotate(-90deg);
+  position: relative;
+  top: -5px;
+  opacity: 0;}
+.app-scroll-form-help-icon {
+  position: absolute;
+  left: -11px;
+  top: -6px;
+  transition: transform .3s ease-out, opacity .3s ease-out;
+  transform: rotate(90deg);
+  opacity: 0;}
+  @media ($md-screen) {
+    .app-scroll-form-help-icon {
+      left: -6px;
+      top: -6px;}}
+.app-header-title-icon.app-visible, .app-scroll-form-help-icon.app-visible {
+  transform: rotate(0deg);
+  opacity: 1;}
+.app-scroll-form-header-end-ctrls {
+  position: fixed;
+  background-color: transparent;
+  z-index: 1100;}
+.app-scroll-form-header-exit-btn {
+  font-size: 12px !important;
+  padding-bottom: 0;
+  margin-bottom: -10px;}
+.app-print-fab {
+  min-width: 24px;
+  min-height: 24px;}
+  .app-print-fab:focus {
+    box-shadow: none;}
+  .app-print-fab-icon {
+      font-size: 28px;}
+.app-scroll-form-header-title {
+  margin-left: 44px;} 
+  @media ($md-screen) {
+    .app-scroll-form-header-title {
+      margin-left: 54px;}
+    .app-print-fab {
+      min-width: 30px;
+      min-height: 30px;}
+      .app-print-fab-icon {
+        font-size: 34px;}
+    .app-scroll-form-header-exit-btn {
+      font-size: 14px !important;}}
+.app-tabset-padding > .app-tabset > ul {
+  padding-left: 40px;
+  padding-right: 40px;}
+.app-tabset-padding.app-view-open > .app-tabset > ul {
+  padding-left: 36px;
+  padding-right: 69px;}
+.app-form-input-divider-tall {
+  border-top: 1px solid;
+  margin-top: 4px;
+  padding-bottom: 18px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  width: 100%;}
+
+  /* Lighter form theme */
+.app-form-theme {
+  font-size: 1.25em;
+  background-color: white !important;
+  border-color: rgba(211,211,211,.2);
+  color: rgba(0,0,0,.87);
+  }
+.app-form-theme-transparent {
+  font-size: 1.25em!important;
+  background-color: transparent !important;
+  border-color: rgba(211,211,211,.2);
+  color: rgba(0,0,0,.87);
+  }
+  .app-form-header-theme, .app-recipes-header-theme, .app-account-header-theme,
+  .app-lists-header-theme, .app-print-header-theme {
+    font-size: 1.25em !important;
+    background-color: $headerDefaultBgColor;
+    border-bottom: 2px solid $headerDefaultBgColor;
+    color: $headerDefaultColor;
+  }
+  .app-print-header-theme {
+    background-color: white;
+    color: $blackTextHigh;
+  }
+  .app-account-header-theme {
+  }
+  .app-lists-header-theme {
+  }
+  .app-form-theme-text {
+    -webkit-text-fill-color: rgba(0,0,0,.87) !important; 
+    color: rgba(0,0,0,.87) !important;}
+  .app-form-theme-select-menu {
+    background-color: gray!important;
+    font-size: .8em;
+    color: white!important;}
+  .app-form-theme-select-menu-lg {
+    background-color: gray!important;
+    color: white!important;}
+  .app-form-input-divider-tall {
+    border-color: rgba(0,0,0,.12);}
+
+.app-form-icon-input-label-sm {
+  margin: 0 0 0 35px;
+  font-size: 85%!important;
+  color: $inputLabelColor !important;}
+  @media($lg-screen) {
+    .app-form-icon-input-label-sm {
+      margin: 0 0 0 42px;}}
+
+/* wrappers to achieve overlapping fields within list item field */
+.app-list-item-field-container {
+  position: relative;}
+.app-list-item-height-1 {
+  min-height: 65px;}
+.app-list-item-height-2 {
+  min-height: 115px;}
+  @media($lg-screen) {
+    .app-list-item-height-1 {
+      min-height: 78px;}
+    .app-list-item-height-2 {
+      min-height: 130px;}}
+.app-list-item-field-container-element {
+  position: absolute;
+  min-width: 100%;
+  left: 0;
+  top: 0;}
+.app-input-clear-btn {
+  top: 6px;
+  left: 3px;
+  position: relative;}
+.app-icon-input-clear-btn {
+  position: relative;
+  top: 12px;}
+.app-list-item-clear-btn {
+  position: relative;
+  top: -20px;}
+.app-z--5 {
+z-index: -5!important;}
+.app-z--1 {
+  z-index: -1;}
+.app-z-3 {
+  z-index: 3;}
+.app-small-list-field-cancel-fab {
+  position: relative;
+  z-index: 4;
+  font-size: 70%;
+  top: -25px;}
+.app-radio-group-input {
+  margin-right: 2px;
+  margin-left: 1px;
+  position: relative;
+  top: 1px;}
+/* provide a flex container unit for an input field with icon, floating label 
+   and verification messages */
+    .app-icon-textarea-container {
+      display: flex;
+      flex: 1 1 100%;
+      flex-direction: column !important;
+      color: rgba(0,0,0,.87) !important;
+      padding-top: calc(1.3em - 2px);
+      max-height: 50px;
+      transition: max-height .4s, color .4s ease-in-out;
+      position: relative;}
+      @media ($lg-screen) {
+        .app-icon-textarea-container{
+          max-height: 62px;}}
+    .app-icon-textarea-container.has-focus {
+      max-height: 500px;}
+    .app-icon-input-field-container {
+      display: flex;
+      flex: 1 1 100%;
+      flex-direction: column !important;
+      color: rgba(0,0,0,.87) !important;
+      padding: 1em 0 .85em 0;
+      position: relative;}
+    .app-icon-input-field-label, .app-icon-input-field-label-sm {
+      position: absolute;
+      left: 35px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      transform: translate3d(0,0px,0) scale(1);
+      transition: .4s ease-out;
+      margin-bottom: 0;
+      color: $inputLabelColor !important;
+      order: 0!important;}
+      .app-no-icon-label {
+        left: 0px;}
+       @media ($lg-screen) {
+         .app-icon-input-field-label, .app-icon-input-field-label-sm {
+          left: 42px;} 
+        .app-no-icon-label {
+          left: 0px;}} 
+    .app-icon-input-field-label.has-value, .app-icon-input-field-label-sm.has-value,
+    .app-icon-input-field-label.has-focus, .app-icon-input-field-label-sm.has-focus {
+        transform: translate3d(-7.5%,-1.3em,0) scale(.85);}
+    .app-textarea-field-label.has-value, .app-textarea-field-label.has-focus {
+      transform: translate3d(-7.5%,-1.6em,0) scale(.85);}
+    .app-show-required::after {
+      content: "*";
+      color: rgba(255,0,0,.8);
+      font-size: 13px;
+      vertical-align: top;}
+    .app-input-icon {
+      margin-top: 0px;
+      line-height: 1em;
+      font-size: 30px;
+      margin-right: 5px;}
+      @media ($lg-screen) {
+        .app-input-icon {
+          font-size: 36px;
+          margin-right: 5px; }}
+    .app-form-input {
+      border-width: 0 0 1px;
+      margin-bottom: 1px;
+      background-color: transparent;
+      color: inherit;
+      z-index: 2; 
+      width: 100%;
+      transition: color .6s ease-in-out;
+      border-color: rgba(0,0,0,.12);
+      line-height: 1em;}
+      .app-form-input:disabled{
+        color: $disabledTextColor;}
+      .app-form-input:focus {
+        border-color: rgb(3,169,244);
+        border-width: 0 0 2px;
+        margin-bottom: 0;
+        outline: none;}
+      .app-form-input.ng-touched:invalid {
+        border-color: rgba(255,0,0,.8);}
+    .app-field-messages {
+      color: red;
+      position: absolute;
+      bottom: 0px;
+      margin-left: 37px;
+      font-size: .6em;}
+      @media ($lg-screen) {
+        .app-field-messages {
+          margin-left: 41px;}}
+    .app-no-icon-message {
+      color: red;
+      font-size: .6em;
+      margin-left: 0;}
+
+.app-icon-offset-width {
+  margin-left: 30px;
+  max-width: calc(100% - 30px) !important;}
+.app-input-icon-area {
+  margin: 0 5px 0 0;
+  width: 30px;}
+  @media ($lg-screen) {
+    .app-input-icon-area {
+      margin: 0 8px 0 0;
+      width: 36px;}}
+.app-form-header-padding {
+  padding: 4px 0px;}
+.app-form-image-button {
+  margin: 0 0 0 8px;
+  padding: 0px;
+  cursor: pointer;
+  background-color: transparent;
+  max-height: 40px !important;
+  max-width: 40px !important;
+  min-width: 40px !important;
+  min-height: 40px !important;}
+  .app-form-header-image {
+    width: 38px !important;
+    height: 38px !important;}
+    @media ($lg-screen) {
+      .app-form-image-button {
+        margin: 0 0 0 10px;
+        max-height: 48px !important;
+        max-width: 48px !important;
+        min-width: 48px !important;
+        min-height: 48px !important;}
+      .app-form-header-image {
+        width: 46px !important;
+        height: 46px !important;}}
+$appFormCloseSize: 36px !important;
+$appFormCloseSizeLg: 40px !important;
+$appFormCloseIconSize: 34px !important;
+$appFormCloseIconSizeLg: 38px !important;
+.app-form-close-button {
+  margin: 0px;
+  padding: 0px;
+  background-color: transparent;
+  max-height: $appFormCloseSize;
+  max-width: $appFormCloseSize;
+  min-width: $appFormCloseSize;
+  min-height: $appFormCloseSize}
+  .app-form-close-icon {
+    vertical-align: top;
+    font-size: $appFormCloseIconSize;
+    width: $appFormCloseIconSize;
+    height: $appFormCloseIconSize;}
+    @media ($lg-screen) {
+      .app-form-close-button {
+        max-height: $appFormCloseSizeLg;
+        max-width: $appFormCloseSizeLg;
+        min-width: $appFormCloseSizeLg;
+        min-height: $appFormCloseSizeLg}
+      .app-form-close-icon {
+        font-size: $appFormCloseIconSizeLg;
+        width: $appFormCloseIconSizeLg;
+        height: $appFormCloseIconSizeLg}}
+.app-form-close-button:focus, .app-form-image-button:focus {
+  box-shadow: none;
+  outline: none;}
+.app-add-subtract-button {
+  margin: 0px;
+  padding: 0px;
+  cursor: pointer;
+  background-color: white;
+  max-width: 40px;
+  min-width: 40px;
+  max-height: 40px;
+  min-height: 40px;}
+  .app-add-subtract-button:focus {
+    outline: none;
+    box-shadow: none;}
+  .app-add-subtract-icon {
+    font-size: 40px;}
+.app-form-title {
+  margin-bottom: 0px;
+  margin-top: 0px;
+  font-size: 1.1em;
+  font-weight: normal;}
+  @media ($lg-screen){
+    .app-form-title {
+      font-size: 1.25em;}}
+.app-noscroll-frame-center {  
+  width: 100%;
+  position: relative;
+  overflow: hidden;}
+.app-scroll-frame-center {
+  width: 100%;
+  min-height: calc(100% - 53px);
+  -webkit-overflow-scrolling: touch;
+  overflow-y: auto;}
+  @media ($lg-screen) {
+    .app-scroll-frame-center {
+      max-height: calc(100% - 61px);}}
+.app-print-container {
+  position: absolute;
+  background-color: white;
+  top: 0;
+  width: 100%;
+  min-height: 100%;
+  z-index: -20;}
+  .app-print-container.app-open {
+    z-index: 2000;}
+    /* @media ($sm-screen) {
+      .app-print-container {
+        left: 10%;}}
+    @media ($md-screen) {
+      .app-print-container {
+        left: 15%;}} */
+  .app-central-container, .app-central-container-sm {
+  width: 100%;
+  min-height: 100%;
+  margin: auto;}
+  @media ($sm-screen) {
+    .app-central-container-sm {
+      width: 60%;}
+    .app-central-container {
+      width: 80%;}}
+  @media ($md-screen) {
+    .app-central-container-sm {
+      width: 50%;}
+    .app-central-container {
+      width: 70%;}}
+.app-whiteframe-2dp {
+  box-shadow: 1px 1px 0px 0 rgba(0,0,0,.2),
+              -1px 0px 0px 0 rgba(0,0,0,.2),
+              2px 2px 0px 0 rgba(0,0,0,.14),
+              3px 3px 0px 0 rgba(0,0,0,.12), 
+              0 4px 0px 0 rgba(0,0,0,.08);} 
+.app-scrollable {
+  -webkit-overflow-scrolling: touch;
+  overflow: auto !important;}
+.app-pan-y {
+  touch-action: pan-y !important;}
+.app-frame {
+  width: 100%;
+  max-height: 100%;}
+.app-form-message-area {
+  font-size: .9em;
+  overflow: hidden;
+  line-height: 1.2em;
+  height: 0px;}
+  .app-form-message-area.app-open {
+    height: 2.5em;}
+
+/**************************************
+/* STYLES MOSTLY RELATED TO: ABOUT     */
+/***************************************/
+
+  /* Lighter About panel theme */
+.app-about-header-theme {
+  padding: 4px 0 6px 0;
+  background-color: $secondaryColor;
+  color: $headerDefaultColor;}
+  .app-about-body-theme {
+    font-size: $xsFontSize !important;
+    background-color: white;
+    line-height: 1.15em;
+    padding: 0 8px 16px 20px;
+    color: rgba(0,0,0,.87);}
+    @media ($sm-screen){
+      .app-about-body-theme {
+        font-size: $smFontSize !important;}}
+        @media ($lg-screen){
+          .app-about-body-theme {
+            font-size: $smFontSize !important;}}
+.app-about-title {
+  margin-bottom: 0px;
+  margin-top: 0px;
+  line-height: 1.2;
+  font-size: 1.25em;
+  text-align: center!important;
+  font-weight: 500;}
+.app-about-heading-icon-area {
+  margin-right: 10px;}
+.app-about-heading-text {
+  font-weight: 500;
+  margin-bottom: 4px;
+  margin-left: -10px;
+  font-size: 115%;}
+.app-about-text-button {
+  vertical-align: middle;
+  font-size: 80%;}
+.app-about-heading-btn {
+  font-weight: normal !important;
+  border-radius: .25rem .25rem;
+  vertical-align: middle;
+  margin-left: -10px;
+  cursor: default!important;
+  font-size: 80%;}
+  .app-about-heading-btn:focus {
+    outline: none;
+    box-shadow: none;} 
+.app-about-text-icon-lg {
+  font-size: 24px;}
+  @media ($lg-screen) {
+    .app-about-text-icon-lg {
+      font-size: 30px;}}
+.app-about-text-icon {
+  font-size: 18px;}
+  @media ($lg-screen) {
+    .app-about-text-icon {
+      font-size: 24px;}}
+.app-about-text-icon-label {
+  position: relative;
+  top: 4px;
+  font-weight: 500;}
+  @media ($lg-screen) {
+    .app-about-text-icon-label {
+      top: 6px;}}
+.app-about-text-icon-btn {
+  padding: 2px 10px 2px 6px;
+  margin-top: 2px;
+  border-radius: .25em;}
+.app-about-text-icon-chip {
+  color: $headerDefaultColor;
+  margin: 2px 0 0 0;
+  padding: 0 6px;
+  border-radius: 3px;
+  background-color: #d3d3d3!important;
+  border: 2px solid transparent;
+  line-height: 20px;
+  min-width: 40px;}
+.app-about-fab-container {
+  display: inline-block;
+  margin-top: 1px;}
+.app-about-fab-icon {
+  position: relative;
+  font-size: 23px;}
+  @media ($lg-screen) {
+    .app-about-fab-icon {
+      font-size: 30px;}
+    .app-about-fab-icon-sm {
+      font-size: 20px;}}
+.app-about-fab-icon-sm {
+  font-size: 19px;}
+.app-about-icon {
+  cursor: text !important;
+  font-size: 24px;
+  max-height: 24px;
+  margin: -4px 6px 0 0;}
+  @media ($lg-screen) {
+    .app-about-icon {
+      font-size: 30px;
+      max-height: 30px;
+      max-width: 30px;}
+    .app-about-checkbox-icon {
+      font-size: 24px;}}
+.app-about-icon-color {
+  color: blue;}
+.app-about-radio-icon {
+  cursor: text!important;
+  max-height: 20px;
+  max-width: 20px;
+  font-size: 16px;
+  margin: 0 6px 0 2px;
+  color: rgba(0,0,0,.5);
+  background-color: #ddd; 
+  font-weight: 100;
+  border-radius: 50%;
+  border: 2px solid darkgray;}
+.app-about-checkbox-icon {
+  cursor: text!important;
+  max-height: 20px;
+  max-width: 20px;
+  font-size: 16px;
+  margin: -4px 6px 0 2px;
+  color: rgba(0,0,0,.6);
+  background-color: #ddd; 
+  font-weight: 600;
+  border-radius: 5px;
+  border: 2px solid darkgray;}
+.app-about-container {
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  z-index: 1110;
+  width: 95%;
+  background-color: white; 
+  bottom: 0px;}
+  @media ($sm-screen) {
+    .app-about-container {
+      width: 65%;}}
+  @media ($md-screen) {
+    .app-about-container {
+      width: 40%;}}
+  /* @media only screen and ($lg-screen) {
+    .app-about-container {
+      width: 40%;}} */
+.app-scroll-frame-left {
+  width: 100%;
+  bottom: 0px;
+  -webkit-overflow-scrolling: touch;
+  overflow-y: auto;
+  background-color: white;}
+.app-click-to-close-about {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 1100;
+  background-color: transparent;}
+  .app-about-text-divider {
+    width: 100%;
+    margin: 2px auto 2px auto;
+    border-bottom: 1px solid $blackTextDivider;}
+  .app-about-text-divider-sm {
+    width: 10%;
+    margin: 2px auto 2px auto;
+    border-bottom: 1px solid $blackTextDivider;}
+/******************************************/
+/* STYLES MOSTLY RELATED TO: RECIPE ENTRY */
+/******************************************/
+.app-tab-item-icon {
+  font-size: 16px;}
+  @media ($lg-screen) {
+    .app-tab-item-icon {
+      font-size: 20px;}}
+.app-dim {
+  opacity: .7;}
+.app-divider-100 {
+  width: 100%;
+  margin: .25em auto .25em auto;
+  border-bottom: 1px solid;}
+.app-divider-50 {
+  width: 50%;
+  margin: .25em auto .25em auto;
+  border-bottom: 1px solid;}
+.app-divider-90 {
+  width: 90%;
+  margin: .25em auto .25em auto;
+  border-bottom: 1px solid;}
+.app-recipe-edit-text {
+  font-style: normal;
+  line-height: 1.2em;
+  font-size: .7em;}
+.app-recipe-section-button {
+  cursor: pointer;
+  text-transform: none;
+  color: $infoLabelColor;
+  padding: 3px 0 3px 8px;
+  background-color: white;
+  border-radius: 0px;
+  width: 100%;
+  font-size: .85em!important;
+  margin: 0;}
+  .app-recipe-section-button:hover {
+    background-color: rgba(0,0,0,.10);}
+    .app-recipe-section-button:focus {
+    outline: none;
+    box-shadow: none;}
+  .app-recipe-section-button.app-open {
+    color: white;
+    background-color: lightslategray;}
+.app-recipe-section-control {
+  margin-bottom: 0;
+  font-size: 30px;
+  color: $inputLabelColor;}
+  .app-recipe-section-control.app-open {
+    color: white;}
+.app-category-label {
+  border: 1px solid rgba(0,0,0,.08);
+  margin-bottom: .25rem;
+  padding-bottom: 0;
+  box-shadow: none;
+  background-color: white;
+  transition: margin-bottom .5s, padding-bottom .5s, border-bottom .5s, box-shadow .5s ease-out;}
+.app-category-label.app-open {
+  /* border-top: 1px solid rgba(0,0,0,.08); */
+  border-bottom: 1px solid rgba(0,0,0,.6);
+  margin-bottom: .5rem!important;
+  box-shadow: 1px 1px 0px 0 rgba(0,0,0,.2),
+              -1px 0px 0px 0 rgba(0,0,0,.2),
+              2px 2px 0px 0 rgba(0,0,0,.14),
+              3px 3px 0px 0 rgba(0,0,0,.12), 
+              0 4px 0px 0 rgba(0,0,0,.08);}
+.app-category-container, .app-category-container-med, .app-category-container-sm {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  max-height: 0px;
+  opacity: 0;
+  background-color: white;
+  transition: max-height .5s, opacity .5s, padding-bottom .5s ease-out;}
+  .app-category-container.app-open, .app-category-container-med.app-open,
+  .app-category-container-sm.app-open {
+    opacity: 1;}
+  .app-category-container.app-open {
+    max-height: 10000px;}
+    .app-category-container-med.app-open {
+      max-height: 2000px;}
+      .app-category-container-sm.app-open {
+        max-height: 500px;}
+    .app-recipe-category-button {
+  border: 2px solid transparent;
+  line-height: 20px;
+  min-width: 40px;}
+.app-category-button-theme {
+  cursor: default!important;
+  color: rgba(0,0,0,.87) !important;
+  margin: 2px 8px 0 0;
+  padding: 0px 6px;
+  font-size: 14px;
+  border-radius: 3px;
+  background-color: lightgray !important;}
+.app-category-delete-icon {
+  font-size: 20px;
+  cursor: pointer;}
+.app-recipe-image-container {
+  padding: 0;}
+.app-entry-image-container {
+  box-shadow: 0 4px 12px #000;
+}
+.app-recipe-image {
+  width: 100%;
+  max-height: 2000px;}
+.app-recipes-menu {
+  width: 99%;
+  min-height: 100%;
+  list-style: none;
+  padding: 0 !important;
+  margin: 0 auto 0 auto !important;}
+.app-recipe-list-item {
+  max-width: 50%;}
+  @media ($md-screen){
+    .app-recipe-list-item {
+      max-width: 33.33%;}}
+.app-recipes-menu-card {
+  display: block;
+  text-transform: none;
+  padding: 0;
+  background-color: white;
+  color: inherit;
+  margin: 0;
+  width: 100%;
+  border-radius: 3px 3px 3px 3px;
+  box-shadow: 1px 1px 0px 0 rgba(0,0,0,.2),
+            -1px 0px 0px 0 rgba(0,0,0,.2),
+            0px -1px 2px 0 rgba(0,0,0,.05),
+            2px 2px 0px 0 rgba(0,0,0,.14),
+            3px 3px 0px 0 rgba(0,0,0,.12), 
+            0 4px 0px 0 rgba(0,0,0,.08);
+overflow: hidden;}
+.app-recipes-view-card {
+  display: block;
+  text-transform: none;
+  padding: 0;
+  background-color: white;
+  color: inherit;
+  margin: 0 auto 0 auto;
+  width: 98%;
+  border-radius: 3px 3px 3px 3px;
+  box-shadow: 1px 1px 0px 0 rgba(0,0,0,.2),
+            -1px 0px 0px 0 rgba(0,0,0,.2),
+            0px -1px 2px 0 rgba(0,0,0,.05),
+            2px 2px 0px 0 rgba(0,0,0,.14),
+            3px 3px 0px 0 rgba(0,0,0,.12), 
+            0 4px 0px 0 rgba(0,0,0,.08);
+overflow: hidden;}
+.app-recipes-print-card {
+  display: block;
+  text-transform: none;
+  padding: 0;
+  background-color: white;
+  color: inherit;
+  margin: 0 auto 0 auto;
+  width: 98%;
+  border-radius: 3px 3px 3px 3px;
+  overflow: hidden;}
+.app-recipe-menu-item-header {
+  width: 100%;}
+.app-recipe-menu-image {
+  max-width: 100%;}
+.app-recipe-view-extra-image {
+  width: 100%;
+  max-height: 2000px;}
+.app-recipe-menu-item-title {
+  color: firebrick;
+  line-height: 1em;
+  font-size: 1em;}
+.app-recipe-menu-item-control-icon {
+  font-size: 20px;
+  cursor: pointer;}
+  @media ($lg-screen) {
+    .app-recipe-menu-item-control-icon{
+      font-size: 24px;}}
+.app-recipe-view-text {
+  color: darkslateblue;
+  line-height: 1.3em;
+  font-style: italic;
+  font-size: .7em;}
+.app-recipe-view-main-image {
+  float: left;
+  margin: -.25rem .5rem 0 -.25rem; 
+  max-width: 55%;}
+.app-recipe-view-categories {
+  font-style: normal;
+  font-weight: 500;}
+.app-recipe-view-ingredients-header {
+  font-style: normal;
+  font-size: 1em;}
+.app-recipe-view-ingredients {
+  line-height: 1.15em;
+  font-style: normal;}
+.app-recipe-view-notes-header {
+  font-style: normal;
+  font-size: 1em;}
+.app-recipe-view-recipe-notes {
+  font-size: .65em;}
+.app-recipe-view-pics-header {
+  font-style: normal;
+  font-size: 1em;}
+.app-recipe-view-picture-note {
+  padding-top: 2px;
+  font-style: normal;
+  font-size: .65em;}
+.app-icon-input-field-label-sm.app-recipe-pics-field-label {
+  transform: translate3d(-7.5%,0,0) scale(.85);}
+.app-catList-container {
+  position: absolute;
+  left: 6px;
+  top: -8px;
+  z-index: 1110;
+  width: 65%;
+  max-height: 425px;
+  box-shadow: 0 0 12px #000000;
+  background-color: white;}
+  @media only screen and ($sm-screen) and (max-width: 758px) and (orientation: landscape) {
+    .app-catList-container {
+      max-height: 220px;}}
+  @media ($md-screen) {
+    .app-catList-container {
+      max-height: 500px;
+      width: 45%;}}
+.app-catlist-header-theme {
+  padding: 4px 0 6px 0;
+  background-color: $tertiaryColor;
+  color: white;}
+    .app-catlist-body-theme {
+    background-color: white;
+    line-height: 1.15em;
+    padding: 0 8px 0;
+    color: rgba(0,0,0,.87);}
+  .app-catlist-menu-item {
+    cursor: pointer;
+    font-family: inherit;}
+  .app-catlist-footer-theme {
+    padding: 8px 0 6px 0;
+    line-height: 1em;
+    background-color: $tertiaryColor;
+    color: white;}
+    @media ($lg-screen) {
+      .app-catlist-footer-theme {
+        padding: 12px 0 10px 0;}}
+  .app-catlist-label {
+  font-weight: 500;}
+  .app-catlist-menu-item-message {
+    color: red;
+    font-size: .6em;
+    margin-left: 16px;}
+.app-recipe-image-controls {
+  max-width: 100%;}
+.app-picture-note {
+  width: 100%;
+  padding-top: 2px;
+  font-size: 60%;}
+.app-picture-note-input {
+  border-width: 0;}
+.app-recipe-dataset-control {
+  width: 98%;}
+.app-date-range-input-control {
+  order: 0 !important;
+  width: 35% ;
+  background-color: white;
+  border-width: 0 0 1px;
+  border-color: rgba(0,0,0,.12);
+  line-height: 1em;}
+   .app-date-range-input-control:focus {
+    outline: none;
+    box-shadow: none;} 
+.app-date-range-input-control:disabled {
+  color: $disabledTextColor;}
+.app-date-range-end-error-message{
+  margin-left: 14px;}
+.app-recipe-action-title {
+  color: firebrick;
+  font-size: 1.1em;}
+/**********************************************/
+/* STYLES MOSTLY RELATED TO: MODALS (DIALOGS) */
+/**********************************************/
+.app-modal-backdrop {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -5;
+  visibility: hidden;
+  background-color: rgba(0,0,0,.4);
+  opacity: 0;}
+  .app-modal-backdrop.app-open, .app-modal-backdrop.app-closing {
+    z-index: 1040;
+    visibility: visible;}
+.app-confirm-dialog {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: -5;
+  visibility: hidden;
+  margin: 25% 3%;
+  max-width: 500px;
+  box-shadow: 0 0 12px #000;
+  border: 1px solid $blackTextDivider;}
+  .app-confirm-dialog.app-open, .app-confirm-dialog.app-closing {
+    visibility: visible;
+    z-index: 1050;}
+  @media ($md-screen) {
+    .app-confirm-dialog {
+    margin: 10% auto;
+    max-width: 600px;}}
+.app-dialog-container {
+border: 1px solid $blackTextDivider;}
+.app-confirm-dialog-content {
+  text-align: center;
+  min-height: 80px;}
+.app-dialog-header {
+  border: 0;
+  padding: 0;
+  font-size: 1.25em !important;
+  border-bottom: 1px solid $blackTextDivider;
+  color: $textOnPrimary;
+  background-color: $modalHeaderColor;
+}
+.app-dialog-footer {
+  background-color: $modalHeaderColor;
+  color: $textOnPrimary;
+  border-top: 1px solid $blackTextDivider;
+}
+/***************************************/
+/* STYLES MOSTLY RELATED TO: COLORS    */
+/***************************************/
+.app-cursor-default {
+  cursor: default;}
+.app-cursor-pointer {
+  cursor: pointer;}
+.app-black-text-high {
+  color: $blackTextHigh;}
+  .app-black-text-medium {
+    color: $blackTextMedium;}
+    .app-black-text-low {
+      color: $blackTextLow;}
+      .app-divider-black {
+      color: $blackTextDivider;}
+.app-white-text-high {
+  color: $whiteTextHigh;}
+  .app-white-text-medium {
+    color: $whiteTextMedium;}
+    .app-white-text-low {
+      color: $whiteTextLow;}
+.app-bold {
+  font-weight: 500;}
+.app-disabled {
+  cursor: default !important;
+  color: $disabledTextColor !important;}
+.app-disabled-text {
+  color: $disabledTextColor !important;}
+.app-disabled-opacity {
+  opacity: .38;}
+.app-faint-opacity {
+  opacity: .09;}
+.app-transparent-text {
+  color: transparent !important;}
+.app-faint-text {
+  color: rgba(0,0,0,.09) !important;}
+.app-active-input-icon-color {
+  color: $accentColor1}
+.app-lists-color {
+  color: rgba(204,153,102,1);}
+.app-logs-color {
+  color: rgba(98,134,95,.9);}
+.app-accounts-color {
+  color: rgba(190,66,56,.9);}
+.app-about-color {
+  color: #5bc0de;}
+.app-success {
+  color: green;}
+.app-error {
+  color: red;}
+.app-white {
+  color: white!important;}
+.app-green {
+  color: green;}
+.app-blue {
+  color: blue;}
+.app-transparent {
+  background-color: transparent !important;
+  color: inherit;}
+.app-court-green {
+  color: rgb(98,134,95);}
+.app-court-ltgreen {
+  color: rgba(98,134,95,.9);}
+.app-court-red {
+  color: rgb(190,66,56);}
+.app-check-green {
+  color: #59b300!important;}
+.app-check-red {
+  color: #ff0000!important;}
+  .app-check-green.app-check-red {
+    color: #ff0000!important;}
+.app-retro-red {
+  color: #a61e1e!important;}
+.app-retro-ltblue {
+  color: #7cc7e2;}
+.app-bg-retro-ltblue {
+  background-color: #7cc7e2!important;
+  color: inherit;}
+.app-retro-brown {
+  color: #997149;}
+.app-bg-retro-brown {
+  background-color: #997149!important;
+  color: inherit;}
+.app-light-brown {
+  color: #cc9966;}
+.app-brite-orange {
+  color: #ff9100;}
+.app-firebrick {
+  color: firebrick;}
+.app-darkgrey {
+  color: darkgrey;}
+.app-darkslateblue {
+  color: darkslateblue;}
+.app-lightslategray {
+  color: lightslategray;}
+.app-darkslategray {
+  color: darkslategray;}
+.app-menu-icon-color {
+color: lightslategray;}
+.app-disabled-icon-color {
+  color: $disabledIconColor;}
+.app-retro-cream {
+color: #fef7e6;}
+.app-bg-retro-cream {
+  background-color: #fef7e6;}
+.app-retro-dark-cream {
+  color: #ffe8b3;}
+.app-bg-retro-dark-cream {
+  background-color: #ffe8b3;}
+.app-bg-transparent {
+  background-color: transparent !important;}
+.app-bg-white {
+  background-color: white !important;}
+.app-bg-gwhite { 
+  background-color: ghostwhite;}
+.app-bg-ltgray { 
+  background-color: lightgray;}
+.app-bg-fab-gray {
+  background-color: rgba(244,243,242,1)!important;}
+.app-bg-fab-accent {
+  background-color: rgba(255,229,127,1)!important;}
+.app-warn {
+  color: $warnColor !important;}
+.app-primary {
+  color: $primaryColor !important;}
+.app-bg-primary {
+  background-color: $primaryColor !important;}
+.app-secondary {
+  color: $secondaryColor !important;}
+.app-bg-secondary {
+  background-color: $secondaryColor !important;}
+.app-tertiary {
+  color: $tertiaryColor !important;}
+.app-bg-tertiary {
+  background-color: $tertiaryColor !important;}
+  .app-accent1 {
+  color: $accentColor1 !important;}
+.app-checkbox {
+  color: $checkboxColor !important;}
+.app-link-active {
+  color: #0275D8;}
+/**********************************************/
+/* STYLES RELATED TO TOAST MESSAGES           */
+/**********************************************/
+.app-toast-container {
+  position: fixed;
+  bottom: 1em;
+  left: .5em;
+  z-index: -5;
+  visibility: hidden;
+  height: 3em;
+  box-shadow: 0 0 12px #000000;
+  border-radius: .25em;
+  min-width: 20em !important;}
+  @media($md-screen) {
+    .app-toast-container {
+      min-width: 25em !important;}}
+  .app-toast-container.app-open {
+    z-index: 1200;
+    visibility: visible;}
+.app-toast-msg {
+  color: white;}
+/**********************************************/
+/* STYLES MOSTLY RELATED TO MODALS            */
+/**********************************************/
+.app-flex-1 {
+  flex: 1;}
+.app-flex-wrap {
+  flex-wrap: wrap;}
+.modal-backdrop.show {
+  opacity: .4;}
+.modal-dialog {
+  max-width: 500px !important;
+  margin: 25% 2%;}
+  @media ($lg-screen) {
+    .modal-dialog {
+      margin: 10% auto;}}
+  @media (orientation: landscape) {
+    .modal-dialog {
+      margin: 10% auto;}}
+.modal-content {   
+  background-color: transparent;
+  border: 0;}
+.app-modal-action-btn {
+  cursor: pointer;
+  background-color: $modalActionBackground;}
+.app-action-btn {
+  cursor: pointer;
+  background-color: $modalActionBackground;}
+   .app-action-btn:focus {
+    outline: none;
+    box-shadow: none;} 
+/**********************************************/
+/* STYLES MOSTLY RELATED TO TABSETS           */
+/**********************************************/
+.app-tabset-theme {
+  background-color: white;
+  color: $textOnPrimary;
+}
+.app-tabset {
+  position: sticky;
+  top: 0;
+  opacity: .96;
+  z-index: 1000;
+  width: 100%;}
+.app-tab-content {
+  box-shadow: 0 1px 0px 0 rgba(0,0,0,.2),
+              0 2px 0px 0 rgba(0,0,0,.14),
+              0 3px 0px 0 rgba(0,0,0,.12), 
+              0 4px 0px 0 rgba(0,0,0,.08);
+  border-radius: 0 0 4px 4px;
+  /* margin-bottom: 10px; */
+  background-color: white;}
+.app-tabset-background {
+  position: absolute;
+  top: 43px;
+  left: 0;
+  width: 100%;
+  height: 62px;
+  background-color: white;}
+  @media ($lg-screen){
+    .app-tabset-background {
+      top: 56px;}}
+.app-nav-tabs {
+  border: 0 !important;
+  transition: padding .2s ease-out;
+  background-color: $secondaryColor;}
+.app-tab-pane {
+  display: block;}
+.app-nav {
+  display: flex;
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;}
+ .app-nav-link {
+  padding: 0 .25em;} 
+.app-nav-tabs .app-nav-link.active {
+  border-bottom: 2px solid $accentColor1;
+  background-color: $secondaryColor;
+  color: white;}
+.app-nav-tabs .app-nav-link {
+  border: 0;
+  padding: 0;
+  border-bottom: 2px solid transparent;
+  margin-bottom: 3px;
+  color: white;
+  background-color: $secondaryColor;
+  transition: border .5s ease-in;}
+.app-nav-tabs .app-nav-link:not(.active):hover {
+  border-color: transparent;
+}
+.app-nav-tabs .app-nav-item {
+  margin: .4em 0;}
+.app-tab-container {
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  visibility: hidden;
+  min-width: 100%;
+}
+  .app-tab-container.app-open {
+    visibility: visible;
+  }
+.app-tab-title {
+  font-size: .75em;}
+  @media($lg-screen) {
+    .app-tab-title {
+      font-size: .85em;}}
+b, strong {
+  font-weight: bold;}
+.btn {
+  font-size: 14px;}
+.btn.disabled, .btn:disabled {
+  opacity: .45;
+  cursor: default;}
+button {
+  font-family: sans-serif;}
+.app-font-size-inherit {
+  font-size: inherit;}
+:focus {
+  outline: none;}
+.app-icon-xsm {
+  font-size: 20px;}
+  @media ($lg-screen) {
+    .app-icon-xsm {
+      font-size: 24px;}}
