@@ -47,6 +47,11 @@ class AccountDelete extends React.Component <{
     }
   }
 
+  // emit a custom event with the given name and detail data
+  public emit = (name: string, data? : any)  => {
+    this.props.utilSvc.emitEvent(name, data);
+  }
+
   // process request to delete user account and data
   submitRequest(form: any) : void {
     this.clearRequestStatus();
@@ -68,9 +73,11 @@ class AccountDelete extends React.Component <{
           // next, try to delete their profile and recipe database items
           this.deleteUserItems() 
           .then((userItemsGone) => {
+            this.emit('AccountDeleted');
             this.props.utilSvc.displayWorkingMessage(false);
           })
           .catch((somethingHappenedBut) => {
+            this.emit('AccountDeleted');
             this.props.utilSvc.displayWorkingMessage(false);
           });
         })

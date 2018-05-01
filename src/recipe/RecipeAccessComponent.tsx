@@ -469,28 +469,24 @@ class RecipeAccess extends React.Component <{
           this.utilSvc.scrollToYPos(this.currentRecipe.menuScrollPosition);
           setTimeout(() => {
             this.menuTabOpen = true;
-            this.urlService.url('/recipes/menu');
           }, 100); // make sure the scroll is done
           break;
         case VIEW_TAB:
           this.utilSvc.scrollToYPos(this.currentRecipe.viewScrollPosition);
           setTimeout(() => {
             this.viewTabOpen = true;
-            this.urlService.url('/recipes/view');
           }, 100); // make sure the scroll is done
           break;
         case SEARCH_TAB:
           this.utilSvc.scrollToYPos(this.currentRecipe.searchScrollPosition);
           setTimeout(() => {
             this.searchTabOpen = true;
-            this.urlService.url('/recipes/search');
           }, 100); // make sure the scroll is done
           break;
         case EDIT_TAB:
           this.utilSvc.scrollToYPos(this.currentRecipe.editScrollPosition);
           setTimeout(() => {
             this.editTabOpen = true;
-            this.urlService.url('/recipes/entry');
           }, 100); // make sure the scroll is done
           break;
         default:
@@ -622,11 +618,11 @@ class RecipeAccess extends React.Component <{
   }
 }
 
-export const searchMyRecipesState     = { name: 'searchMyRecipes', url: '/recipes/searchMy',  
+export const searchMyRecipesState     = { name: 'searchMyRecipes', url: '/recipes',  
                                           component: RecipeAccess };
-export const searcySharedRecipesState = { name: 'searchSharedRecipes', url: '/recipes/searchShared',
+export const searcySharedRecipesState = { name: 'searchSharedRecipes', url: '/recipes',
                                           component: RecipeAccess };
-export const recipeEntryState         = { name: 'recipeEntry', url: '/recipes/entry',  
+export const recipeEntryState         = { name: 'recipeEntry', url: '/recipes',  
                                           component: RecipeAccess };
 
 export default RecipeAccess;

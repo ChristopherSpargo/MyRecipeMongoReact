@@ -47,8 +47,6 @@ const userSvc       = new UserSvc(userModel, fireBaseSvc, utilSvc);
 const currentRecipe = new CurrentRecipe()
 const recipeSvc     = new RecipeSvc(utilSvc, userModel, currentRecipe);
 
-
-
 router.stateService.go('home');
 ReactDOM.render(
     <Provider 

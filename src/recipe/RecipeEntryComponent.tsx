@@ -211,7 +211,7 @@ export class RecipeEntry extends React.Component <{
   updateSharedCopy = (rData: RecipeData) : Promise<any> => {
     return new Promise((resolve, reject) => {
       if (rData.sharedItem_id) {
-        this.props.utilSvc.getConfirmation('UpdateCopy', 'Update Shared Copy', 
+        this.props.utilSvc.getConfirmation('UpdateCopy', 'Update Shared Copy', 'settings',
         'A shared copy of this recipe exists. Would you like it updated now?', 'Update It', 'Not Now')
         .then((updateIt) => {
           this.props.utilSvc.displayWorkingMessage(true, 'Updating Shared Copy')
@@ -798,7 +798,7 @@ export class RecipeEntry extends React.Component <{
                       multiple={true}
                       id="rPicsID"
                       className="app-no-display" 
-                      accept="image/*"
+                      // accept="image/*"
                       onChange={this.fileSelected.bind(this, 'rPicsID')}
                     />
                     <div className="d-flex flex-row justify-content-between align-items-center pr-1 mt-1">

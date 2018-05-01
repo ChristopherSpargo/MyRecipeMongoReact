@@ -116,7 +116,7 @@ class SignInComponent extends React.Component< { user?: User, utilSvc?: UtilSvc,
         .then((success) => {
           this.requestStatus.addMsg('createSuccess');
           this.requestStatus.addMsg('accountCreated');
-          this.setState({newAccount: true});
+          this.newAccount = true;
           this.props.utilSvc.displayWorkingMessage(false);
         })
         .catch((failure) => {
@@ -232,11 +232,12 @@ class SignInComponent extends React.Component< { user?: User, utilSvc?: UtilSvc,
       this.clearRequestStatus();
     }
 
-    handleSubmit = () => {
+    handleSubmit = evt => {
+      evt.preventDefault();
       let form = document.getElementById('loginForm');
       this.sendLoginRequest(form);
     }
-
+  
     updateEmail = (val: string) => {
       this.userEmail = val;
     }
@@ -269,7 +270,12 @@ class SignInComponent extends React.Component< { user?: User, utilSvc?: UtilSvc,
           
             <div className=" app-scroll-frame-center app-card-bottom-corners app-whiteframe-2dp">
               <div className="app-form-theme px-0 pt-3">
-                <form name="loginForm" id="loginForm" role="form">
+                <form 
+                  name      = "loginForm" 
+                  id        = "loginForm" 
+                  role      = "form"
+                  onSubmit  = {this.handleSubmit}
+                >
                   <div className="d-flex flex-column px-2">
           
                      {/* Email field */}
@@ -426,18 +432,16 @@ class SignInComponent extends React.Component< { user?: User, utilSvc?: UtilSvc,
                     {!this.newAccount && !this.wrongPassword() && 
                     <FabControl
                       fAria="sign in" 
-                      fType="button"
+                      fType="submit"
                       fButtonCSS="app-fab-sm-sq app-white" 
                       fIconColor="app-white"
                       fLabel={this.createAccount ? 'Create Account' : 'Sign In'}
                       fIcon={this.createAccount ? 'add_circle_outline' : 'check_circle_outline'}
-                      fDelay={0}
-                      fOnClick={this.handleSubmit}
                     />}
                     {this.newAccount && 
                     <FabControl 
                       fAria="sign in" 
-                      fLabel="Continue to Sign In"
+                      fLabel="Continue"
                       fButtonCSS="app-fab-sm-sq app-white"
                       fIcon="arrow_forward" 
                       fIconColor="app-white"

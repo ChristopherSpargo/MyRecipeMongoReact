@@ -20,7 +20,8 @@ class HomeComponent extends React.Component<{ user?: User, mainMenu?: MainMenuMo
 
  @observable  smallScreen = true;
 
-  componentDidMount() {
+
+   componentDidMount() {
     window.addEventListener('resize', this.checkScreenSize);
     this.checkScreenSize();
     if (!this.props.user.profile) {                          // if the user doesn't have a profile

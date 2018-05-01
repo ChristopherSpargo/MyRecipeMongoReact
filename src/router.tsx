@@ -1,5 +1,5 @@
 'use strict'
-import { UIRouterReact, servicesPlugin, pushStateLocationPlugin } from '@uirouter/react';
+import { UIRouterReact, servicesPlugin, hashLocationPlugin } from '@uirouter/react';
 
 // Import states
 
@@ -13,7 +13,8 @@ import { searchMyRecipesState, searcySharedRecipesState, recipeEntryState } from
 // Create router instance + setup
 export const router = new UIRouterReact();
 router.plugin(servicesPlugin);
-router.plugin(pushStateLocationPlugin);
+// router.plugin(pushStateLocationPlugin);
+router.plugin(hashLocationPlugin);
 
 // Register each state
 const states = [

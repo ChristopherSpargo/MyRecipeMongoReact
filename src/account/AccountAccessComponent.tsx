@@ -52,11 +52,13 @@ export class AccountAccess extends React.Component <{
 
   // set up the message responders for this module
   setMessageResponders() : void {
-    window.addEventListener('scroll', this.handleScroll)
+    document.addEventListener('AccountDeleted', this.closeView);
+    window.addEventListener('scroll', this.handleScroll);
   }
 
   // remove all the message responders set in this module
   deleteMessageResponders() : void {
+    document.removeEventListener('AccountDeleted', this.closeView);
     window.removeEventListener('scroll', this.handleScroll)
   }
 
