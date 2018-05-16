@@ -31,6 +31,7 @@ import ConfirmationModal from './modal/ConfirmationModalComponent'
 import SharedSettingsModal from './modal/SharedSettingsModalComponent'
 import RecipePrint from './recipe/RecipePrintComponent';
 const versionLogo = require('./assets/favicon.ico');
+const cardsImage = require('./assets/cards2.png');
 
 const stateService  = router.stateService;
 const urlService    = router.urlService;
@@ -62,6 +63,7 @@ ReactDOM.render(
         stateService={stateService} 
         modalSvc={modalModel} 
         versionLogo={versionLogo}
+        cardsImage={cardsImage}
         currentRecipe={currentRecipe} 
         recipeSvc={recipeSvc}
     >

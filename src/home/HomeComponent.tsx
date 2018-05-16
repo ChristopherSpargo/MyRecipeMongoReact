@@ -13,10 +13,10 @@ import { UtilSvc } from '../utilities/UtilSvc';
 import HelpButton from '../formTools/HelpButtonComponent';
 
 
-@inject('user', 'mainMenu', 'aboutModel', 'stateService', 'utilSvc', 'versionLogo')
+@inject('user', 'mainMenu', 'aboutModel', 'stateService', 'utilSvc')
 @observer
 class HomeComponent extends React.Component<{ user?: User, mainMenu?: MainMenuModel,
-         aboutModel?: AboutModel, stateService?: any, utilSvc?: UtilSvc, versionLogo?: any},  {} > {
+         aboutModel?: AboutModel, stateService?: any, utilSvc?: UtilSvc},  {} > {
 
  @observable  smallScreen = true;
 

@@ -16,14 +16,15 @@ interface PicItem {
 }
     
     
-@inject('user', 'utilSvc', 'recipeSvc', 'currentRecipe')
+@inject('user', 'utilSvc', 'recipeSvc', 'currentRecipe', 'cardsImage')
 @observer
 class RecipeView extends React.Component <{
   viewTabOpen           ?: boolean,    // indicates this panel should open
   user                  ?: User,
   utilSvc               ?: UtilSvc,
   recipeSvc             ?: RecipeSvc,
-  currentRecipe         ?: CurrentRecipe
+  currentRecipe         ?: CurrentRecipe,
+  cardsImage            ?: any        // default image if no pictures
 }, {} > {
 
   userInfo          = this.props.user;
@@ -142,7 +143,7 @@ class RecipeView extends React.Component <{
   // get an image to display for the menu item
   getRecipeImage = () : string => {
     if (this.rMainPic) { return this.rMainPic.URL; }
-    return 'assets/images/cards2.jpg';
+    return this.props.cardsImage;
   }
 
   // get a note to display for the main image

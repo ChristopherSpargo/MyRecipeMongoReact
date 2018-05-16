@@ -7,7 +7,7 @@ import { Recipe } from '../recipe/Recipe'
 
 // Component to render a single item on the search results menu
 
-@inject('user', 'utilSvc', 'currentRecipe')
+@inject('user', 'utilSvc', 'currentRecipe', 'cardsImage')
 @observer
 class RecipeMenuItem extends React.Component <{
   item          ?: Recipe,      // Recipe data for this menu item
@@ -18,6 +18,7 @@ class RecipeMenuItem extends React.Component <{
   deleteFn      ?: Function,    // function to call if recipe to be deleted
   makeSharedFn  ?: Function,    // function to call to make recipe shared
   sharedSettingsFn ?: Function, // function to call to edit recipe's shared settings
+  cardsImage    ?: any          // default image for recipe menu item
   }, {} > {
 
   // indicate if share icon should be shown with menu item
@@ -38,7 +39,7 @@ class RecipeMenuItem extends React.Component <{
   // get an image to display for the menu item
   getMenuImage = () : string => {
     if (this.props.item.data.mainImage) { return this.props.item.data.mainImage.picURL; }
-    return 'assets/images/cards2.jpg';
+    return this.props.cardsImage;
   }
 
   // return the Description text (first 200 chars) for the given Recipe

@@ -167,12 +167,12 @@ export class RecipeEntry extends React.Component <{
       rData.restrictedTo = this.rRestrictedTo.slice();
     }
     if (this.rPictures.length) {    // convert images for storage
-      rData.mainImage = this.convertPic(this.rPictures[0]);
+      rData.mainImage = this.convertToRecipePic(this.rPictures[0]);
       rData.numExtras = this.rPictures.length - 1;
       if (rData.numExtras) {
         rData.extraImages = [];
         for (let i = 0; i < rData.numExtras; i++) {
-          rData.extraImages.push(this.convertPic(this.rPictures[i + 1]));
+          rData.extraImages.push(this.convertToRecipePic(this.rPictures[i + 1]));
         }
       }
     }
@@ -245,18 +245,6 @@ export class RecipeEntry extends React.Component <{
     })
   }
 
-  // convert picture to format that is stored in database
-  convertPic = (p : PicObj) : RecipePic => {
-        let newP = {} as RecipePic;
-        newP.note = p.noteText;
-        newP.contentType = p.contentType;
-        let n = p.picURL.indexOf(',');    // find start of base64 encoded data string
-        let dataString = p.picURL.substr(n + 1);
-        newP.pic = atob(dataString);    // convert image back to binary
-        newP.picSize = newP.pic.length;
-        return newP;
-  }
-
   // check for data input problems before submitting
   checkForProblems = (form: any) : boolean => {
     this.rCategories.check();
@@ -308,7 +296,12 @@ export class RecipeEntry extends React.Component <{
     })
   }
 
-  // process file selection event and create a URL for the preview image
+  // generate a 'click' event on the picture File Select field
+  clickField = () => {
+    document.getElementById('rPicsID').click();
+  }
+
+  // process click event from the File Selection field and create URLs for the preview images
   fileSelected = (fId : string) => {
     let fRef : any = document.getElementById(fId);
     this.selectedPics = fRef.files;  // get the list of files from the form input element
@@ -318,6 +311,7 @@ export class RecipeEntry extends React.Component <{
       } else {
         this.props.utilSvc.displayWorkingMessage(true, 'Processing Image');
       }
+      // now read and compress (if applicable) all selected pictures
       for (let i = 0; i < this.selectedPics.length; i++) {
         let reader = new FileReader();
         let pic : PicObj = {} as PicObj;
@@ -331,7 +325,7 @@ export class RecipeEntry extends React.Component <{
           .then((cPic) => {
             this.rPictures.push(cPic);
             if (i === this.selectedPics.length - 1) {
-              this.props.utilSvc.displayWorkingMessage(false);
+              this.props.utilSvc.displayWorkingMessage(false); // cancel working message after last picture
             }
           })
           .catch((error) => {               // error compressing picture?
@@ -346,7 +340,7 @@ export class RecipeEntry extends React.Component <{
     }
   }
 
-  // compress the given image (DataURL)
+  // compress the file referenced in the given PicObj
   compressPic = (pic : PicObj) : Promise<PicObj> => {
     let ic = new ImageCompressor();
     let reader = new FileReader();
@@ -380,16 +374,58 @@ export class RecipeEntry extends React.Component <{
     })
   }
 
-  // remove the given picture from the pictures for this recipe
+  // convert internal picture (PicObj) to format that is stored in database (RecipePic)
+  convertToRecipePic = (p : PicObj) : RecipePic => {
+    let newP = {} as RecipePic;
+    newP.note = p.noteText;
+    newP.contentType = p.contentType;
+    let n = p.picURL.indexOf(',');    // find start of base64 encoded data string
+    let dataString = p.picURL.substr(n + 1);
+    newP.pic = atob(dataString);    // convert image back to binary
+    newP.picSize = newP.pic.length;
+    return newP;
+}
+
+  // convert a RecipePic to a PicObj
+  convertToPicObj = (p : RecipePic) : PicObj => {
+    let newP = {} as PicObj;
+    newP.noteText = p.note;
+    newP.contentType = p.contentType;
+    newP.picSize = p.picSize;
+      // images are stored as binary strings, a base64 DataURL (picURL) is created when Recipe is built
+    newP.picURL = p.picURL; 
+    return newP;
+}
+
+// add the images in the given array to the rPictures array
+addExtraPictures = (images : RecipePic[]) => {
+  if (images.length) {
+    for (let i = 0; i < images.length; i++) {
+      this.rPictures.push(this.convertToPicObj(images[i]));
+    }
+  }
+}
+
+// add the newly acquired extraImages for this recipe to the rPictures array
+setExtraImages = () => {
+  this.addExtraPictures(this.props.currentRecipe.recipe.data.extraImages);
+}
+
+// switch the image at index i with the main image (index 0)
+makeMainImage = (i: number) => {
+  let temp : PicObj;
+
+  temp = this.rPictures[0];
+  this.rPictures[0] = this.rPictures[i];
+  this.rPictures[i] = temp;
+}
+
+// remove the given picture from the pictures for this recipe
   removePicture = (i: number) => {
 
     if (i !== undefined && i < this.rPictures.length) {
         this.rPictures.splice(i, 1);      // remove picture
     }
-  }
-
-  clickField = () => {
-    document.getElementById('rPicsID').click();
   }
 
   // get the form ready for another operation
@@ -445,40 +481,6 @@ export class RecipeEntry extends React.Component <{
       this.rSubmittedBy         = '';
       this.rCreatedOn           = this.todaysDate;      
     }
-  }
-
-    // create a PicObj from a RecipePic
-  convertToPicObj = (p : RecipePic) : PicObj => {
-        let newP = {} as PicObj;
-        newP.noteText = p.note;
-        newP.contentType = p.contentType;
-        newP.picSize = p.picSize;
-          // images are stored as binary strings, a base64 DataURL (picURL) is created when Recipe is built
-        newP.picURL = p.picURL; 
-        return newP;
-  }
-  
-  // add the images in the given array to the rPictures array
-  addExtraPictures = (images : RecipePic[]) => {
-    if (images.length) {
-      for (let i = 0; i < images.length; i++) {
-        this.rPictures.push(this.convertToPicObj(images[i]));
-      }
-    }
-  }
-
-  // add the newly acquired extraImages for this recipe to the rPictures array
-  setExtraImages = () => {
-    this.addExtraPictures(this.props.currentRecipe.recipe.data.extraImages);
-  }
-
-  // switch the image at index i with the main image (index 0)
-  makeMainImage = (i: number) => {
-    let temp : PicObj;
-
-    temp = this.rPictures[0];
-    this.rPictures[0] = this.rPictures[i];
-    this.rPictures[i] = temp;
   }
 
   // return a boolean to denote the presence of the selected item
