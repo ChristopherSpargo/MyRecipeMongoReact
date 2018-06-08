@@ -194,6 +194,7 @@ class SharedSettingsModal extends React.Component<{
     result.delete = this.deleteRecipe;
     result.create = this.props.modalSvc.ssmData.dType === 'SharedCreate';
     result.list = this.props.modalSvc.ssmData.itemList.length ? this.props.modalSvc.ssmData.itemList : undefined;
+    this.deleteRecipe = false;
     this.props.modalSvc.closeSharedSettingsModal(400)
     .then((success) => {
       // this.forceUpdate();
@@ -204,6 +205,7 @@ class SharedSettingsModal extends React.Component<{
 
   // call the reject method
   dismiss = () => {
+    this.deleteRecipe = false;
     this.props.modalSvc.closeSharedSettingsModal(400)
     .then((success) => {
       // this.forceUpdate();

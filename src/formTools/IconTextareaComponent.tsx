@@ -23,7 +23,7 @@ class IconTextarea extends React.Component <{
   fRequired    ?: boolean,  // if input is required
   fDisabled    ?: boolean,  // when input should be disabled
   fReadonly    ?: string,   // if the field is readonly
-  fList        ?: string,   // if the field should be formatted as a list (with bullets)
+  fList        ?: string,   // if the field should be formatted as a list (with numbers or bullets)
   fLabel       ?: string,   // label for input
   fFocusedLabel?: string,   // label for field when focused or has a value
   fIcon        ?: string,   // icon for input
@@ -146,6 +146,9 @@ class IconTextarea extends React.Component <{
     let res = l.replace(/(\-| )degree[s]? ?/ig, String.fromCharCode(176));
     res = res.replace(/ deg$/ig, String.fromCharCode(176));
     res = res.replace(/ deg[s]? ?/ig, String.fromCharCode(176) + ' ');
+    res = res.replace(/1\/4/g, String.fromCharCode(188));
+    res = res.replace(/1\/2/g, String.fromCharCode(189));
+    res = res.replace(/3\/4/g, String.fromCharCode(190));
     return res;
   }
 

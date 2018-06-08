@@ -121,8 +121,11 @@ class IconInput extends React.Component <{
       let selEnd = evt.target.selectionEnd;
       v = evt.target.value;
       if (this.fCapitalize) { // capitalize every word?
-        v = v.toLowerCase().replace(/\b[a-z]/g,
+        v = v.toLowerCase().replace(/^[a-z]/g,
                         (x : string) : string => { return x.charAt(0).toUpperCase() + x.substr(1); } );
+        v = v.replace(/[ \-\(\/][a-z]/g,
+                          (x : string) : string => { 
+                            return x.charAt(0) + x.charAt(1).toUpperCase() + x.substr(2); } );
         evt.target.value = v;
         evt.target.setSelectionRange(selEnd, selEnd)
       }
