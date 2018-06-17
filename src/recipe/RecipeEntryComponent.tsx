@@ -878,7 +878,8 @@ makeMainImage = (i: number) => {
                                 className="app-form-input  app-cursor-pointer app-picture-note-input"
                                 placeholder={'Add caption here (' + p.picSize + ')'}
                                 maxLength={200}
-                                onBlur={this.updatePicNote.bind(this, i)}
+                                value={p.noteText}
+                                onInput={this.updatePicNote.bind(this, i)}
                               />
                             </div>
                           </div>)
