@@ -15,12 +15,13 @@ import HelpButton from '../formTools/HelpButtonComponent';
 import FabControl from '../formTools/FabControlComponent';
 import { FormStatusMessages } from '../formTools/FormStatusMessagesComponent';
 import ListItemField from '../formTools/ListItemFieldComponent'
+import { UserSvc } from '../user/UserSvc';
 
     // COMPONENT for MANAGE CATEGORIES feature
 
-@inject('user', 'utilSvc', 'recipeSvc')
+@inject('user', 'utilSvc', 'recipeSvc', 'userSvc')
 @observer
-class CategoriesComponent extends React.Component <{ user?: User,
+class CategoriesComponent extends React.Component <{ user?: User, userSvc?: UserSvc,
   stateService?: any, utilSvc?: UtilSvc, recipeSvc?: RecipeSvc},  {} > {
 
 
@@ -55,18 +56,28 @@ class CategoriesComponent extends React.Component <{ user?: User,
           this.listObj      = list;
           this.itemList     = list.items.sort((a, b) : number => { return a.name < b.name ? -1 : 1; });
           this.formOpen     = true;
-      })
+          if (!this.props.user.profile.categoriesCreated) {
+            this.props.user.profile.categoriesCreated = true;  // update categoriesCreated flag if necessary
+            this.props.userSvc.updateUserProfile(this.props.user)
+            .then(() => {})
+            .catch((error) => {}) 
+          }  
+        })
       .catch((noCats) => {   // no category table
-          this.props.recipeSvc.initializeTable(this.tableName, this.props.user.authData.uid)
-          .then((list) => {
-            this.props.utilSvc.displayThisUserMessage('initializingList', this.tableName);
-            this.listObj      = list;
-            this.itemList     = this.listObj.items;
-            this.formOpen     = true;
-          })
-          .catch((initError) => {   // can't continue, database error
-            this.props.utilSvc.returnToHomeMsg('errorInitializingList', 400, this.tableName); 
-          })
+          if (!this.props.user.profile.categoriesCreated) {
+            this.props.recipeSvc.initializeTable(this.tableName, this.props.user.authData.uid)
+            .then((list) => {
+              this.props.utilSvc.displayThisUserMessage('initializingList', this.tableName);
+              this.listObj      = list;
+              this.itemList     = this.listObj.items;
+              this.formOpen     = true;
+            })
+            .catch((initError) => {   // can't continue, database error
+              this.props.utilSvc.returnToHomeMsg('errorInitializingList', 400, this.tableName); 
+            })
+          } else {        // categories list exists but can't be read
+            this.props.utilSvc.returnToHomeMsg('errorReadingList', 400, this.tableName);
+          }
       });
     }
   }

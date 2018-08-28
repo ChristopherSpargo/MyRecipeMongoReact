@@ -84,11 +84,17 @@ class SignInComponent extends React.Component< { user?: User, utilSvc?: UtilSvc,
         this.props.user.profile = Profile.build();     // no profile yet, create a profile
         this.props.user.profile.id = authData.uid;
         this.props.user.profile.email = this.props.user.userEmail;
+        this.props.user.profile.categoriesCreated = false;
         this.props.userSvc.createUserProfile(this.props.user)
         .then((newProfile) => {
           this.props.user.profile = newProfile;
           this.props.recipeSvc.initializeTable(CATEGORY_TABLE_NAME, authData.uid) // initialize Categories List
-          .then((success) => {})
+          .then((success) => {
+            this.props.user.profile.categoriesCreated = true;
+            this.props.userSvc.updateUserProfile(this.props.user)
+            .then(() => {})
+            .catch((error) => {}) 
+          })
           .catch((error) => {
               this.props.utilSvc.setUserMessage('errorInitializingCategoriesList');
           })

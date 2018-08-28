@@ -3,7 +3,7 @@
   export const APP_TITLE1           = 'MyRecipe';
   export const APP_TITLE2           = 'Mongo';
   export const IMAGE_DIRECTORY      = 'assets/';
-  export const APP_VERSION          = '2.0.6';
+  export const APP_VERSION          = '2.0.7';
   
   // Data Version Changes:
   export const APP_DATA_VERSION     = 1.0;

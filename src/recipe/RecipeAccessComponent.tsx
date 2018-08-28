@@ -12,6 +12,7 @@ import { CurrentRecipe } from './CurrentRecipeSvc';
 import { RecipeSvc, CATEGORY_TABLE_NAME, ListTableItem } from './RecipeSvc';
 import { Recipe } from './Recipe'
 import { User, SHARED_USER_ID } from '../user/UserModel';
+import { UserSvc } from '../user/UserSvc';
 
 export const SEARCH_TAB     : number = 0;
 export const SEARCH_TAB_ID  : string = 'searchTab';
@@ -24,11 +25,11 @@ export const EDIT_TAB_ID    : string = 'editTab';
  
 // COMPONENT for Recipe Access
 
-@inject('user', 'recipeSvc', 'stateService', 'utilSvc', 'currentRecipe', 'urlService')
+@inject('user', 'recipeSvc', 'stateService', 'utilSvc', 'currentRecipe', 'urlService', 'userSvc')
 @observer
 class RecipeAccess extends React.Component <{
   user?: User, recipeSvc?: RecipeSvc, stateService?: any, utilSvc?: UtilSvc, currentRecipe?: CurrentRecipe,
-  urlService?: any
+  urlService?: any, userSvc?: UserSvc
 }, {} > {
 
   @observable activeTab : string = MENU_TAB_ID;
@@ -208,7 +209,14 @@ class RecipeAccess extends React.Component <{
         this.currentRecipe.categoryList = cList;
         this.currentRecipe.categoryList.items = 
               cList.items.sort((a, b) : number => { return a.name < b.name ? -1 : 1; });
-        resolve('ok');
+        if (!this.userInfo.profile.categoriesCreated) {
+          this.userInfo.profile.categoriesCreated = true;  // update categoriesCreated flag if necessary
+          this.props.userSvc.updateUserProfile(this.props.user)
+          .then(() => { resolve('ok'); })
+          .catch((error) => { resolve('ok'); }) 
+        } else {
+          resolve('ok');
+        }
       })
       .catch((error) => {
         this.utilSvc.returnToHomeMsg('errorReadingList', 400, 'Categories');
