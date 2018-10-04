@@ -67,7 +67,7 @@ class AccountDelete extends React.Component <{
      .then((proceed) => {
       this.props.utilSvc.displayWorkingMessage(true, 'Authorizing');
       // first, try to delete the user's login account
-        this.props.userSvc.deleteAccount(this.userEmail, this.password)
+        this.props.userSvc.deleteAccount()
         .then((userAccountGone) => {
           this.props.utilSvc.displayWorkingMessage(true, 'Deleteing Account');
           // next, try to delete their profile and recipe database items
@@ -83,11 +83,8 @@ class AccountDelete extends React.Component <{
         })
         .catch((accountDeleteFailed) => {
           switch (accountDeleteFailed) {  // decide which status message to give
-            case 'INVALID_PASSWORD':
-              this.requestStatus.addMsg('incorrectPassword');
-              break;
-            case 'INVALID_USER':
-              this.requestStatus.addMsg('unrecognizedEmail');
+            case 'auth/requires-recent-login':
+              this.requestStatus.addMsg('requiresRecentLogin');
               break;
             default:
               this.props.utilSvc.setUserMessage('accountDeleteFailed');
@@ -184,27 +181,9 @@ class AccountDelete extends React.Component <{
                 fValue        = {this.userEmail}
               />
 
-              {/* Password field */}
-              <IconInput
-                fCheckAll     ={this.checkAll}
-                fName         ="deletePassword" 
-                fRequired     ={true} 
-                fType         ="password" 
-                fLabel        ="What's your Password?" 
-                fFocusedLabel = "Account Password:"  
-                fIcon         ="lock_open"
-                fColor        ="app-accent1" 
-                fValue        ={this.password} 
-                fErrors       ="valueMissing|patternMismatch|tooShort"
-                fErrorMsgs    ="A password is required.|Invalid password character/format.
-                                |Password must be at least 6 characters."
-                fMinlength    ={6} 
-                fMaxlength    ={16} 
-                fPattern      ="^[a-zA-Z]+[!#$%\^\-+*\w]*$" 
-                fBlurFn       = {this.updatePassword}
-                fOnInput      = {this.updatePassword}
-                fFocusFn      ={this.clearRequestStatus}
-              />
+              <div>
+                Delete account for this email.
+              </div>
 
               {/* Status Message Area */}
               <FormStatusMessages fMessageOpen = {this.haveStatusMessages()}>
@@ -212,11 +191,8 @@ class AccountDelete extends React.Component <{
                   <StatusMessage sMsgs={this.statusMsgs} name="deleteFail" class="app-error">
                       Unable to delete account.
                   </StatusMessage>
-                  <StatusMessage sMsgs={this.statusMsgs} name="incorrectPassword" class="app-error">
-                      Password value is incorrect.
-                  </StatusMessage>
-                  <StatusMessage sMsgs={this.statusMsgs} name="unrecognizedEmail" class="app-error">
-                      No account for current email.
+                  <StatusMessage sMsgs={this.statusMsgs} name="requiresRecentLogin" class="app-error">
+                      Please sign in again and retry.
                   </StatusMessage>
                   <StatusMessage sMsgs={this.statusMsgs} name="formHasErrors" class="app-error">
                       Please correct the fields with errors.

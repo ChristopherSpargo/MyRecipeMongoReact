@@ -65,7 +65,7 @@ export class UserSvc {
 
       // delete the account associated with the given email and password
       // returns: promise
-      deleteAccount(email : string, password : string) {
+      deleteAccount() {
         if (this.user.profile.hasRestriction(RESTRICTION_WRITE)) {
           this.utilSvc.setUserMessage('noWriteAccess');          
           return new Promise((resolve, reject) => {
@@ -74,7 +74,7 @@ export class UserSvc {
             }, 100);
           });
         }
-        return this.fireBaseSvc.deleteAccount(email, password);
+        return this.fireBaseSvc.deleteAccount();
       }
 
       // change the email associated with the given email and password
@@ -88,7 +88,7 @@ export class UserSvc {
             }, 100);
           });
         }
-        return this.fireBaseSvc.changeEmail(currEmail, password, newEmail)
+        return this.fireBaseSvc.changeEmail(newEmail)
       }
 
       // create an account for the given email and password
@@ -120,7 +120,7 @@ export class UserSvc {
 
       // change the password associated with the given email
       // returns: promise
-      changePassword(email : string, currPassword : string, newPassword : string) : Promise<any> {
+      changePassword(newPassword : string) : Promise<any> {
         if (this.user.profile.hasRestriction(RESTRICTION_WRITE)) {
           this.utilSvc.setUserMessage('noWriteAccess');          
           return new Promise((resolve, reject) => {
@@ -129,7 +129,7 @@ export class UserSvc {
             }, 100);
           });
         }
-        return this.fireBaseSvc.changePassword(email, currPassword, newPassword);
+        return this.fireBaseSvc.changePassword(newPassword);
       }
 
 }

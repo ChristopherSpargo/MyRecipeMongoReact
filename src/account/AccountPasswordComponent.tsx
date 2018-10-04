@@ -66,17 +66,17 @@ class PasswordChange extends React.Component <{
       return;
     }
     this.props.utilSvc.displayWorkingMessage(true);
-    this.props.userSvc.changePassword(this.userEmail, this.currPassword, this.newPassword)
+    this.props.userSvc.changePassword(this.newPassword)
     .then((success) => {
       this.reportPasswordChange();
     })
     .catch((error) => {
       switch (error) {  // decide which status message to give
-        case 'INVALID_PASSWORD':
-          this.requestStatus.addMsg('incorrectCurrentPassword');
+        case 'auth/weak-password':
+          this.requestStatus.addMsg('weakPassword');
           break;
-        case 'INVALID_USER':
-          this.requestStatus.addMsg('unrecognizedEmail');
+        case 'auth/requires-recent-login':
+          this.requestStatus.addMsg('requiresRecentLogin');
           break;
         default:
           this.props.utilSvc.setUserMessage('passwordChangeFailed');
@@ -157,7 +157,7 @@ class PasswordChange extends React.Component <{
               />
 
               {/* Password field */}
-              <IconInput
+              {/* <IconInput
                 fCheckAll     ={this.checkAll}
                 fName         ="pwdCurrPassword" 
                 fRequired     ={true} 
@@ -176,7 +176,7 @@ class PasswordChange extends React.Component <{
                 fBlurFn       = {this.updateCurrPassword}
                 fOnInput      = {this.updateCurrPassword}
                 fFocusFn      ={this.clearRequestStatus}
-              />
+              /> */}
 
               {/* New Email field */}
               <IconInput
@@ -206,14 +206,14 @@ class PasswordChange extends React.Component <{
                   <StatusMessage sMsgs={this.statusMsgs} name="passwordChangeFail" class="app-error">
                       Unable to change password.
                   </StatusMessage>
-                  <StatusMessage sMsgs={this.statusMsgs} name="incorrectCurrentPassword" class="app-error">
-                      Current Password value is incorrect.
+                  <StatusMessage sMsgs={this.statusMsgs} name="weakPassword" class="app-error">
+                      Given password is too weak.
                   </StatusMessage>
                   <StatusMessage sMsgs={this.statusMsgs} name="passwordIsBlank" class="app-error">
                       New Password is blank.
                   </StatusMessage>
-                  <StatusMessage sMsgs={this.statusMsgs} name="unrecognizedEmail" class="app-error">
-                      No account for current email.
+                  <StatusMessage sMsgs={this.statusMsgs} name="requiersRecentLogin" class="app-error">
+                      Please sign in again and retry.
                   </StatusMessage>
                   <StatusMessage sMsgs={this.statusMsgs} name="formHasErrors" class="app-error">
                       Please correct the fields with errors.

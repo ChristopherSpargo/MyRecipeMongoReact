@@ -62,7 +62,7 @@ class SignInComponent extends React.Component< { user?: User, utilSvc?: UtilSvc,
     }
   
     // finish up Login process.  Update user's cookie and read user's profile.  Report status message.
-    reportLogin(authData : any) : void {
+    reportLogin(authData : firebase.UserInfo) : void {
       this.props.user.userEmail = this.userEmail;
       this.props.user.password = this.userPassword;
       this.props.user.authData = authData;
@@ -128,10 +128,10 @@ class SignInComponent extends React.Component< { user?: User, utilSvc?: UtilSvc,
         .catch((failure) => {
           this.requestStatus.addMsg('createFail');
           switch (failure) {
-            case 'EMAIL_TAKEN':
+            case 'auth/email-already-in-use':
               this.requestStatus.addMsg('emailInUse');
               break;
-            case 'INVALID_EMAIL':
+            case 'auth/invalid-email':
               this.requestStatus.addMsg('emailInvalid');
               break;
             default:
@@ -147,14 +147,17 @@ class SignInComponent extends React.Component< { user?: User, utilSvc?: UtilSvc,
         })
         .catch((error) => {
           switch (error) {  // decide which message to give
-            case 'INVALID_USER':
+            case 'auth/user-not-found':
               this.requestStatus.addMsg('unrecognizedEmail');
               break;
-            case 'INVALID_EMAIL':
+            case 'auth/invalid-email':
               this.requestStatus.addMsg('emailInvalid');
               break;
-            case 'INVALID_PASSWORD':
+            case 'auth/wrong-password':
               this.requestStatus.addMsg('incorrectPassword');
+              break;
+            case 'auth/user-disabled':
+              this.requestStatus.addMsg('userDisabled');
               break;
             default:
               this.requestStatus.addMsg('weirdProblem');
@@ -171,8 +174,8 @@ class SignInComponent extends React.Component< { user?: User, utilSvc?: UtilSvc,
     requestPasswordReset = () => {
       this.clearRequestStatus();
       this.props.utilSvc.getConfirmation('ForgotPwd', 'Forgot Password:', 'info', 
-      `You can receive an email containing a temporary password
-        that you can use to log in.  You can then set your password to something else.
+      `You can receive an email containing a link 
+        that you can follow to log in with a new password.
           Or, you can try to sign in again now.`, 'Send Email', 'Try Again')
       .then((sendEmail) => {
         this.props.utilSvc.displayWorkingMessage(true, 'Sending Email');
@@ -184,8 +187,11 @@ class SignInComponent extends React.Component< { user?: User, utilSvc?: UtilSvc,
         })
         .catch((error) => {
           switch (error) {  // decide which message to give
-            case 'INVALID_USER':
+            case 'auth/user-not-found':
               this.requestStatus.addMsg('unrecognizedEmail');  // this probably should not happen
+              break;
+            case 'auth/invalid-email':
+              this.requestStatus.addMsg('emailInvalid');
               break;
             default:
           }
@@ -405,6 +411,9 @@ class SignInComponent extends React.Component< { user?: User, utilSvc?: UtilSvc,
                       </StatusMessage>
                       <StatusMessage sMsgs={this.statusMsgs} name="emailInvalid" class="app-error">
                         Email Address is invalid.
+                      </StatusMessage>
+                      <StatusMessage sMsgs={this.statusMsgs} name="userDisabled" class="app-error">
+                        User account has been disabled.
                       </StatusMessage>
                       <StatusMessage sMsgs={this.statusMsgs} name="weirdProblem" class="app-error">
                         Some weird problem occurred.

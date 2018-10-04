@@ -81,17 +81,14 @@ class EmailChange extends React.Component <{
     })
     .catch((error) => {
       switch (error) {  // decide which status message to give
-        case 'EMAIL_TAKEN':
+        case 'auth/email-already-in-use':
           this.requestStatus.addMsg('newEmailInUse');
           break;
-        case 'INVALID_EMAIL':
+        case 'auth/invalid-email':
           this.requestStatus.addMsg('newEmailInvalid');
           break;
-        case 'INVALID_PASSWORD':
-          this.requestStatus.addMsg('incorrectPassword');
-          break;
-        case 'INVALID_USER':
-          this.requestStatus.addMsg('unrecognizedEmail');
+        case 'auth/requires-recent-login':
+          this.requestStatus.addMsg('requiresRecentLogin');
           break;
         default:
           this.props.utilSvc.setUserMessage('emailChangeFailed');
@@ -104,7 +101,6 @@ class EmailChange extends React.Component <{
   // reset the change form
   resetForm = () => {
     this.newEmail = '';
-    this.password = '';
     this.currEmail          = this.props.user.userEmail;
     this.rememberLogin      = (this.currEmail === this.props.cookieSvc.getCookieItem('userEmail'));
 }
@@ -122,10 +118,6 @@ class EmailChange extends React.Component <{
   handleSubmit = evt => {
     evt.preventDefault();
     this.submitRequest(evt.target);
-  }
-
-  updatePassword = (val: string) => {
-    this.password = val;
   }
 
   updateNewEmail = (val: string) => {
@@ -162,28 +154,6 @@ class EmailChange extends React.Component <{
                 fValue        = {this.currEmail}
               />
 
-              {/* Password field */}
-              <IconInput
-                fCheckAll     ={this.checkAll}
-                fName         ="emailPassword" 
-                fRequired     ={true} 
-                fType         ="password" 
-                fLabel        ="What's your Password?" 
-                fFocusedLabel = "Password:"  
-                fIcon         ="lock_open"
-                fColor        ="app-accent1" 
-                fValue        ={this.password} 
-                fErrors       ="valueMissing|patternMismatch|tooShort"
-                fErrorMsgs    ="A password is required.|Invalid password character/format.
-                                |Password must be at least 6 characters."
-                fMinlength    ={6} 
-                fMaxlength    ={16} 
-                fPattern      ="^[a-zA-Z]+[!#$%\^\-+*\w]*$" 
-                fBlurFn       = {this.updatePassword}
-                fOnInput      = {this.updatePassword}
-                fFocusFn      ={this.clearRequestStatus}
-              />
-
               {/* New Email field */}
               <IconInput
                 fCheckAll     = {this.checkAll}
@@ -214,11 +184,8 @@ class EmailChange extends React.Component <{
                   <StatusMessage sMsgs={this.statusMsgs} name="newEmailInUse" class="app-error">
                       New Email Address already in use.
                   </StatusMessage>
-                  <StatusMessage sMsgs={this.statusMsgs} name="incorrectPassword" class="app-error">
-                      Password value is incorrect.
-                  </StatusMessage>
-                  <StatusMessage sMsgs={this.statusMsgs} name="unrecognizedEmail" class="app-error">
-                      No account for current email.
+                  <StatusMessage sMsgs={this.statusMsgs} name="requiresRecentLogin" class="app-error">
+                      Please sign in again and retry.
                   </StatusMessage>
                   <StatusMessage sMsgs={this.statusMsgs} name="formHasErrors" class="app-error">
                       Please correct the fields with errors.

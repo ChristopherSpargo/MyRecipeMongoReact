@@ -9,7 +9,7 @@ export const SHARED_USER_ID       = 'b6d96237-7b30-4d2a-838d-7e85d4bb8092';
  export class User {
     @observable userEmail       = '';
     @observable password        = '';
-    @observable profile         : Profile;
+    @observable profile         : Profile = new Profile();
     @observable authData        : any;
     @observable messages        = new StringMsgList();
     @observable openToastTimer  = 0
