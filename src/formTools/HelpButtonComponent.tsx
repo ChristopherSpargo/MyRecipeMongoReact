@@ -10,6 +10,7 @@ class HelpButton extends React.Component<{
 
   fPosition ?: string, // 'absolute | relative' 
                       // if 'absolute', host container must be positioned relative
+  fBCSS ?: string,     // extra CSS for button
   aboutModel?: AboutModel
 }, {} > {
 
@@ -19,6 +20,7 @@ class HelpButton extends React.Component<{
 
   render() {
     const fPosition = this.props.fPosition || 'absolute';
+    const bCSS = this.props.fBCSS || '';
 
     return(
         <FabControl 
@@ -28,7 +30,7 @@ class HelpButton extends React.Component<{
           fIcon       = "help_outline"
           fIconColor  = "app-help-btn-icon"
           fOnClick    = {this.toggleAbout}
-          fButtonCSS  = {'pb-0 ' + (fPosition === 'absolute' ? 'app-help-btn-absolute' : 'app-help-btn')}
+          fButtonCSS  = {'py-0 ' + bCSS + (fPosition === 'absolute' ? ' app-help-btn-absolute' : ' app-help-btn')}
           fVertical   = {true}
           fExtraCSS   = "app-help-btn-container"
           fAria       = "help"

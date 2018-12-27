@@ -205,7 +205,7 @@ body {
   position: relative;
   left: -2px;}
 .app-help-btn {
-  transform: scale(.8);}
+  transform: scale(.77);}
   .app-help-btn-container {
     margin-top: -2px;}
   .app-help-btn-icon {
@@ -214,19 +214,19 @@ body {
   .app-help-btn-label {
     color: $whiteTextMedium;}
 
-/* when this is used in the form header we want white */
-  .app-scroll-form-help-icon .app-help-btn-icon,
-  .app-scroll-form-help-icon .app-help-btn-label {
-    color: white;}
-
 .app-help-btn-absolute {
-  transform: scale(.8);
+  transform: scale(.77);
   position: absolute;
   left: 0;
   top: -5px;}
   @media ($md-screen){
     .app-help-btn-absolute {
       top: -2px;}}
+.app-help-top {
+  top: 0px}
+  @media ($md-screen){
+    .app-help-top {
+      top: 5px;}}
 .app-menu-button {
   margin-bottom: 0 !important;
   margin-top: 0 !important;
@@ -634,12 +634,8 @@ border-top: 1px solid gray;}
 .app-scroll-form-header-icon {
   position: fixed;
   background-color: transparent;
-  top: 5px;
   z-index: 1100;}
-  @media ($md-screen) {
-    .app-scroll-form-header-icon {
-      top: 10px;}}
-.app-header-title-icon {
+/* .app-header-title-icon {
   transition: transform .3s ease-out, opacity .3s ease-out;
   transform: rotate(-90deg);
   position: relative;
@@ -658,15 +654,11 @@ border-top: 1px solid gray;}
       top: -6px;}}
 .app-header-title-icon.app-visible, .app-scroll-form-help-icon.app-visible {
   transform: rotate(0deg);
-  opacity: 1;}
+  opacity: 1;} */
 .app-scroll-form-header-end-ctrls {
   position: fixed;
   background-color: transparent;
   z-index: 1100;}
-.app-scroll-form-header-exit-btn {
-  font-size: 12px !important;
-  padding-bottom: 0;
-  margin-bottom: -10px;}
 .app-print-fab {
   min-width: 24px;
   min-height: 24px;}
@@ -675,17 +667,15 @@ border-top: 1px solid gray;}
   .app-print-fab-icon {
       font-size: 28px;}
 .app-scroll-form-header-title {
-  margin-left: 44px;} 
+  margin-left: 46px;} 
   @media ($md-screen) {
     .app-scroll-form-header-title {
-      margin-left: 54px;}
+      margin-left: 56px;}
     .app-print-fab {
       min-width: 30px;
       min-height: 30px;}
       .app-print-fab-icon {
-        font-size: 34px;}
-    .app-scroll-form-header-exit-btn {
-      font-size: 14px !important;}}
+        font-size: 34px;}}
 .app-tabset-padding > .app-tabset > ul {
   padding-left: 40px;
   padding-right: 40px;}

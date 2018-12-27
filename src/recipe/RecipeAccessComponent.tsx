@@ -184,6 +184,15 @@ class RecipeAccess extends React.Component <{
     }
   }
 
+  // simulate back button being hit or close if no history
+  fakeBackButtonHit = () => {
+    if (!this.adjNavPath && this.navPath.length) {
+      window.history.back();
+    } else {
+      this.closeView();
+    }
+  }
+
   // check the size of the screen and set the number of columns for the recipes menu
   checkScreenSize = () => {
     if (window.matchMedia('(min-width: 768px)').matches) {
@@ -557,7 +566,7 @@ class RecipeAccess extends React.Component <{
           headerTheme     = "app-recipes-header-theme"
           printMsg        = {this.printMsg}
           showHelp        = {this.pageIsScrolled}
-          headerClose     = {this.closeView}
+          headerClose     = {this.fakeBackButtonHit}
         />
                           
         <div className="app-tabset-background"/>

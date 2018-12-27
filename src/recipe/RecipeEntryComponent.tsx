@@ -21,7 +21,6 @@ import FormSection from '../formTools/FormSectionComponent';
 
 import { APP_DATA_VERSION } from '../app.constants';
 import ImageCompressor from '@xkeshi/image-compressor/dist/image-compressor.esm.js'
-import HelpButton from '../formTools/HelpButtonComponent';
 
 export interface PicObj {
   file: File;           // File object for new pictures
@@ -904,7 +903,6 @@ makeMainImage = (i: number) => {
                   className="d-flex flex-row justify-content-center align-items-center app-bg-primary 
                             app-pos-relative pb-2"
                 >
-                  <HelpButton/>
                   <FabControl
                     fType       = "submit"
                     fLabel      = "Save"

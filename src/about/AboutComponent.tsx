@@ -4,7 +4,7 @@ import { observer, inject } from 'mobx-react';
 
 // import AboutMyRecipeMongo from './AboutMyRecipeMongo';
 import { AboutModel } from './AboutModel'
-import AboutTextIcon from './AboutTextIcon';
+// import AboutTextIcon from './AboutTextIcon';
 import AboutMyRecipeMongo from './AboutMyRecipeMongoComponent';
 import AboutContactUs from './AboutContactUs';
 import AboutAccountAccess from './AboutAccountAccessComponent';
@@ -100,15 +100,6 @@ class AboutComponent extends React.Component<{ aboutModel?: AboutModel }, {} > {
             <div className="app-about-header-theme app-card-top-corners">
                 <div className="d-flex flex-row justify-content-between align-items-center">
                   <div className="d-flex flex-row justify-content-start align-items-center ml-2"> 
-                    <AboutTextIcon 
-                      fIcon={this.helpContextIcon()} 
-                      fColor="app-white" 
-                      fSize="XL"
-                      fExtraCSS=" "
-                    />
-                    <div className="ml-2 d-flex app-about-title">{this.helpContextTitle()}</div> 
-                  </div>
-                  <div className="d-flex flex-row justify-content-center align-items-center">
                     <button 
                       id="aboutCloseBtn" 
                       type="button" 
@@ -117,6 +108,7 @@ class AboutComponent extends React.Component<{ aboutModel?: AboutModel }, {} > {
                     >
                       <i className="material-icons app-form-close-icon app-white" aria-label="close">arrow_back</i>
                     </button>
+                    <div className="ml-2 d-flex app-about-title">{this.helpContextTitle()}</div> 
                   </div>
                 </div>
             </div>

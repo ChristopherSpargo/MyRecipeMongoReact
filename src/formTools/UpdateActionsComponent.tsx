@@ -2,7 +2,6 @@
 import * as React from 'react';
 import { observer } from 'mobx-react';
 import FabControl from './FabControlComponent';
-import HelpButton from './HelpButtonComponent';
 
 // Provide SAVE, ADD and DELETE buttons (usually at the end of a form)
 
@@ -36,7 +35,6 @@ class UpdateActions extends React.Component<{
     const aLabel    = this.props.fALabel  || 'Add';
     const sLabel    = this.props.fSLabel  || 'Save';
     const rLabel    = this.props.fRLabel  || 'Remove';
-    const helpBtn   = this.props.fHelpBtn || true;
     const bgColor   = this.props.fBgColor || defBgColor;
     const btnCSS    = this.props.fButtonCSS + ' app-fab-sm-sq';
     const iconColor = this.props.fIconColor || defTextColor;
@@ -49,7 +47,6 @@ class UpdateActions extends React.Component<{
         className={`d-flex flex-row justify-content-center align-items-center 
                 app-pos-relative pb-2 ` + bgColor}
       >
-        {helpBtn && <HelpButton/>}
         {(!this.props.fDeleteCheck || (this.props.fOnDelete !== undefined)) &&
         <FabControl 
           fAria       ={(this.props.fAddCheck ? aLabel : sLabel)} 

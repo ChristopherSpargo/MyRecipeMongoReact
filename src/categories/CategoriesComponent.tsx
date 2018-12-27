@@ -11,7 +11,6 @@ import { RecipeData } from '../recipe/Recipe';
 import { User } from '../user/UserModel';
 import FormHeader from '../formTools/FormHeaderComponent'
 import { StatusMessages, StatusMessage } from '../formTools/StatusMessagesComponent';
-import HelpButton from '../formTools/HelpButtonComponent';
 import FabControl from '../formTools/FabControlComponent';
 import { FormStatusMessages } from '../formTools/FormStatusMessagesComponent';
 import ListItemField from '../formTools/ListItemFieldComponent'
@@ -354,7 +353,6 @@ class CategoriesComponent extends React.Component <{ user?: User, userSvc?: User
                   app-pos-relative app-bg-primary pb-2" 
                 id="actions"
               >
-                <HelpButton/>
                 <FabControl
                   fType       = "button"
                   fLink       = "Done"

@@ -15,7 +15,6 @@ import { RecipeSvc, CATEGORY_TABLE_NAME } from '../recipe/RecipeSvc'
 import FormHeader from '../formTools/FormHeaderComponent';
 import IconInput from '../formTools/IconInputComponent';
 import { StatusMessages, StatusMessage } from '../formTools/StatusMessagesComponent';
-import HelpButton from '../formTools/HelpButtonComponent';
 import FabControl from '../formTools/FabControlComponent';
 import { FormStatusMessages } from '../formTools/FormStatusMessagesComponent';
 
@@ -443,7 +442,6 @@ class SignInComponent extends React.Component< { user?: User, utilSvc?: UtilSvc,
                               app-pos-relative app-bg-primary pb-2" 
                     id="actions"
                   >
-                    <HelpButton/>
                     {!this.newAccount && !this.wrongPassword() && 
                     <FabControl
                       fAria="sign in" 

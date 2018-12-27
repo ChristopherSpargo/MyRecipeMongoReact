@@ -2,7 +2,7 @@
   "name": "myrecipemongo",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://myrecipemongo.com.s3-website-us-west-2.amazonaws.com",
+  "homepage": "http://myrecipemongoreact.com.s3-website-us-west-2.amazonaws.com",
   "dependencies": {
     "@uirouter/react": "^0.6.2",
     "@xkeshi/image-compressor": "^0.5.3",

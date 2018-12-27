@@ -7,7 +7,6 @@ import { User } from '../user/UserModel';
 import FabControl from '../formTools/FabControlComponent';
 import FormSection from '../formTools/FormSectionComponent';
 import FormHeader from '../formTools/FormHeaderComponent'
-import HelpButton from '../formTools/HelpButtonComponent';
 import ProfileUpdate from './AccountProfileComponent';
 import EmailChange from './AccountEmailComponent';
 import PasswordChange from './AccountPasswordComponent';
@@ -198,7 +197,6 @@ export class AccountAccess extends React.Component <{
                       app-pos-relative app-bg-primary pb-2"
             id="actions"
           >
-            <HelpButton/>
             <FabControl
               fType       = "button"
               fLink       = "Done"

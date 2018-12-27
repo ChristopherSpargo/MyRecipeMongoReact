@@ -43,20 +43,22 @@ class FormHeader extends React.Component<{
     this.emit(event.currentTarget.id);
   }
 
+  // close the About panel
+  closeForm = event => {
+    this.props.headerClose();
+  }
+
+
   render() {
 
   // set some defaults
     const printMsg           = this.props.printMsg;
-    const headerIcon         = this.props.headerIcon       || 'local_dining';
     const headerTitle        = this.props.headerTitle;
     const headerTheme        = this.props.headerTheme;
     const headerTextColor    = this.props.headerTextColor  || 'app-white';
-    const closeButtonTheme   = this.props.closeButtonTheme || 'app-white-text-medium';
     const appBarItems        = this.props.appBarItems;
     const headerType         = this.props.headerType;
-    const closeLabel         = this.props.closeLabel       || 'Exit';
     const headerClose        = this.props.headerClose;
-    const showHelp           = this.props.showHelp         || false;
     const btnPos             = this.props.btnPositioning   || '';
   
 
@@ -71,8 +73,7 @@ class FormHeader extends React.Component<{
               >
                 <button 
                   type="button" 
-                  className={'btn d-flex flex-row align-items-center app-form-image-button' + 
-                              (showHelp ? '' : ' app-visible')} 
+                  className={'btn d-flex flex-row align-items-center app-form-image-button app-visible'} 
                   aria-label="help"
                   data-toggle="tooltip" 
                   data-placement="top" 
@@ -81,24 +82,17 @@ class FormHeader extends React.Component<{
                 > 
                   <i 
                     className={'material-icons app-fab-icon-smm app-header-title-icon ' + 
-                            headerTextColor + (showHelp ? '' : ' app-visible')} 
-                    onClick={this.toggleAbout}
-                  >
-                    {headerIcon}
+                            headerTextColor +  ' app-visible'} 
+                    onClick={this.closeForm}
+                  >arrow_back
                   </i>
                 </button>
-                <div 
-                  className={'app-scroll-form-help-icon app-form-image-button' + 
-                                (!showHelp ? '' : ' app-visible ') + btnPos}
-                >
-                  <HelpButton/>
-                </div>
               </div>
               <div 
-                className="d-flex flex-row justify-content-between align-items-center 
+                className="d-flex flex-row justify-content-start align-items-center 
                             app-flex-1 app-scroll-form-header-title"
               >
-                <div className="d-flex app-form-title ">{headerTitle}</div>
+                <div className="d-flex app-form-title">{headerTitle}</div>
                 {appBarItems && 
                 <div> 
                   {appBarItems.map((item) =>
@@ -122,7 +116,7 @@ class FormHeader extends React.Component<{
             <div className="d-flex flex-row justify-content-end align-items-end app-flex-1 mr-1">
               <div 
                 className={`d-flex flex-row justify-content-center 
-                              align-items-center app-scroll-form-header-end-ctrls` + btnPos}
+                              align-items-center app-scroll-form-header-end-ctrls app-help-top`}
               >
                 {printMsg && 
                 <FabControl
@@ -139,13 +133,9 @@ class FormHeader extends React.Component<{
                   fParam      = {printMsg}
                   fIconColor  = "app-white"
                 />}
-                <FabControl
-                  fType       = "button"
-                  fLink       = {closeLabel}
-                  fOnClick    = {headerClose}
-                  fButtonCSS  = {closeButtonTheme + ' app-scroll-form-header-exit-btn'}
-                  fAria       = {closeLabel}
-                />
+                  <HelpButton 
+                    fPosition="relative" 
+                  />
               </div>
             </div>}
           </div>
