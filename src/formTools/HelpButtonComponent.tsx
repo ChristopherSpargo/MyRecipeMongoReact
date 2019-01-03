@@ -30,7 +30,7 @@ class HelpButton extends React.Component<{
           fIcon       = "help_outline"
           fIconColor  = "app-help-btn-icon"
           fOnClick    = {this.toggleAbout}
-          fButtonCSS  = {'py-0 ' + bCSS + (fPosition === 'absolute' ? ' app-help-btn-absolute' : ' app-help-btn')}
+          fButtonCSS  = {'py-0 px-0 ' + bCSS + (fPosition === 'absolute' ? ' app-help-btn-absolute' : ' app-help-btn')}
           fVertical   = {true}
           fExtraCSS   = "app-help-btn-container"
           fAria       = "help"

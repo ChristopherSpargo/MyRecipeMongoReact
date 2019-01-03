@@ -73,11 +73,11 @@ class FormHeader extends React.Component<{
               >
                 <button 
                   type="button" 
-                  className={'btn d-flex flex-row align-items-center app-form-image-button app-visible'} 
-                  aria-label="help"
+                  className={'btn d-flex flex-row align-items-center app-form-image-button mx-0 app-visible'} 
+                  aria-label="back"
                   data-toggle="tooltip" 
                   data-placement="top" 
-                  title="Help" 
+                  title="Back" 
                   data-delay="200"
                 > 
                   <i 
@@ -113,18 +113,18 @@ class FormHeader extends React.Component<{
               </div>
             </div>
             {(headerClose && (headerType !== 'simple')) && 
-            <div className="d-flex flex-row justify-content-end align-items-end app-flex-1 mr-1">
+            <div className="d-flex flex-row justify-content-end align-items-end app-flex-1">
               <div 
                 className={`d-flex flex-row justify-content-center 
                               align-items-center app-scroll-form-header-end-ctrls app-help-top`}
               >
                 {printMsg && 
-                <FabControl
+                <FabControl 
                   fType       = "button"
                   fFab        = {true}
                   fTip        = "Print this Recipe"
                   fOpen       = {true}
-                  fButtonCSS  = "d-flex app-print-fab app-bg-transparent app-link-btn"
+                  fButtonCSS  = "d-flex app-print-fab app-bg-transparent mx-0 app-link-btn"
                   fDelay      = {0}
                   fAria       = "print"
                   fIcon       = "print"

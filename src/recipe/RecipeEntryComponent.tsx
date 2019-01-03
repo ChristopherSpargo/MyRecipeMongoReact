@@ -576,10 +576,9 @@ makeMainImage = (i: number) => {
 
   render() {
     return(
-      <div>
-        {/* Form used to provide the RECIPE ENTRY feature */}
+            // Form used to provide the RECIPE ENTRY feature
         <div 
-          className={'app-tab-container px-0 pt-2 app-bg-gwhite' +
+          className={'app-tab-container px-0 pt-2 app-bg-white' +
                     (this.props.editTabOpen ? ' app-open' : '')}
         >
 
@@ -597,22 +596,23 @@ makeMainImage = (i: number) => {
             {/* Instructional messages */}
             {this.createNew &&
             <div 
-              className={`d-flex flex-row justify-content-center app-flex-1 
-                          app-black-text-low app-bold align-items-center mb-2 app-small-font`}
+              className={`d-flex flex-row justify-content-start app-flex-1 
+                          app-black-text-low app-bold align-items-center my-2 ml-2 app-small-font`}
             >
               Creating a new recipe.
             </div>}
             {!this.createNew &&
             <div 
-              className={`d-flex flex-row justify-content-center app-flex-1 
-                                            app-darkgrey align-items-center mb-2 app-small-font`}
+              className={`d-flex flex-row justify-content-start app-flex-1 
+                          app-black-text-low app-bold align-items-center my-2 ml-2 app-small-font`}
             >
               Updating an existing recipe.
             </div>}
 
             {/* Start of Form */}
-            <div className="px-0">
+            <div className="app-frame px-0">
               <form 
+                className="app-width-98 app-ht-100 mx-auto d-flex flex-column justify-content-between"
                 id="recipeEntryForm" 
                 role="form" 
                 name="recipeEntryForm" 
@@ -900,14 +900,14 @@ makeMainImage = (i: number) => {
 
                 {/* Actions Area */}
                 <div 
-                  className="d-flex flex-row justify-content-center align-items-center app-bg-primary 
+                  className="d-flex flex-row justify-content-center align-items-center app-bg-white 
                             app-pos-relative pb-2"
                 >
                   <FabControl
                     fType       = "submit"
                     fLabel      = "Save"
                     fOpen       = {true}
-                    fButtonCSS  = "app-fab-sm-sq app-white mr-4"
+                    fButtonCSS  = "app-fab-sm-sq app-oval-button mr-4"
                     fDelay      = {200}
                     fAria       = "add"
                     fIcon       = "check_circle_outline"
@@ -918,7 +918,7 @@ makeMainImage = (i: number) => {
                     fType       = "button"
                     fLabel      = {this.createNew ? 'Clear' : 'Cancel'}
                     fOpen       = {true}
-                    fButtonCSS  = "app-fab-sm-sq app-white"
+                    fButtonCSS  = "app-fab-sm-sq app-oval-button"
                     fDelay      = {200}
                     fOnClick    = {this.resetForm}
                     fAria       = "cancel"
@@ -930,7 +930,7 @@ makeMainImage = (i: number) => {
               </form>
             </div> 
         </div>
-      </div>
+      // </div>
     )
   }
 }

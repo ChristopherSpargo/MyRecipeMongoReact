@@ -439,14 +439,14 @@ class SignInComponent extends React.Component< { user?: User, utilSvc?: UtilSvc,
                    {/* Actions Area */}
                   <div 
                     className="d-flex flex-row justify-content-center align-items-center 
-                              app-pos-relative app-bg-primary pb-2" 
+                              app-pos-relative pb-2" 
                     id="actions"
                   >
                     {!this.newAccount && !this.wrongPassword() && 
                     <FabControl
                       fAria="sign in" 
                       fType="submit"
-                      fButtonCSS="app-fab-sm-sq app-white" 
+                      fButtonCSS="app-fab-sm-sq app-oval-button" 
                       fIconColor="app-white"
                       fLabel={this.createAccount ? 'Create Account' : 'Sign In'}
                       fIcon={this.createAccount ? 'add_circle_outline' : 'check_circle_outline'}
@@ -455,7 +455,7 @@ class SignInComponent extends React.Component< { user?: User, utilSvc?: UtilSvc,
                     <FabControl 
                       fAria="sign in" 
                       fLabel="Continue"
-                      fButtonCSS="app-fab-sm-sq app-white"
+                      fButtonCSS="app-fab-sm-sq app-oval-button"
                       fIcon="arrow_forward" 
                       fIconColor="app-white"
                     />}
@@ -463,7 +463,7 @@ class SignInComponent extends React.Component< { user?: User, utilSvc?: UtilSvc,
                     <FabControl  
                       fAria="forgot password"
                       fLabel="Reset Password"
-                      fButtonCSS="app-fab-sm-sq app-white"
+                      fButtonCSS="app-fab-sm-sq app-oval-button"
                       fIcon="sentiment_dissatisfied" 
                       fIconColor="app-white"
                       fType="button" 

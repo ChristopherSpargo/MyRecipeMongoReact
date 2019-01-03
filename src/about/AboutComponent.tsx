@@ -105,6 +105,11 @@ class AboutComponent extends React.Component<{ aboutModel?: AboutModel }, {} > {
                       type="button" 
                       className="btn app-form-close-button" 
                       onClick={this.closeAbout}
+                      aria-label="close"
+                      data-toggle="tooltip" 
+                      data-placement="top" 
+                      title="Close" 
+                      data-delay="200"
                     >
                       <i className="material-icons app-form-close-icon app-white" aria-label="close">arrow_back</i>
                     </button>

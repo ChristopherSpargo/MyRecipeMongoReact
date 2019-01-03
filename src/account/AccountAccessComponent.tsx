@@ -128,7 +128,7 @@ export class AccountAccess extends React.Component <{
     return(
       <div>
         <div 
-          className={'d-flex flex-column app-central-container-sm app-bg-white app-pos-relative app-fade-in' +
+          className={'d-flex flex-column app-full-frame app-bg-white app-fade-in' +
                 (this.viewOpen ? ' app-open' : '')}
         >
 
@@ -194,14 +194,14 @@ export class AccountAccess extends React.Component <{
           {/* Actions Area */}
           <div 
             className="d-flex flex-row app-form-theme justify-content-center align-items-center 
-                      app-pos-relative app-bg-primary pb-2"
+                      app-pos-relative pb-2"
             id="actions"
           >
             <FabControl
               fType       = "button"
               fLink       = "Done"
               fOnClick    = {this.closeView}
-              fButtonCSS  = "app-fab-sm-sq app-white"
+              fButtonCSS  = "app-fab-sm-sq app-oval-button"
               fAria       = "done"
             />
           </div>

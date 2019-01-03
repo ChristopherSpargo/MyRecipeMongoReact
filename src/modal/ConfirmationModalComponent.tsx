@@ -67,23 +67,21 @@ class ConfirmationModal extends React.Component<{
           </div>
           <div 
             className="d-flex flex-row justify-content-around align-items-center 
-                          app-dialog-footer py-0 px-2"
+                          app-dialog-footer pb-2 px-2"
           >
             {!this.props.modalSvc.smData.notifyOnly && 
             <FabControl 
               fType       = "button"
               fLink       = {this.props.modalSvc.smData.cancelText}
               fOnClick    = {this.dismiss}
-              fButtonCSS  = "app-white"
-              fLabelCSS   = "app-bigger-font"
+              fButtonCSS  = "app-fab-sm-sq app-oval-button"
               fAria       = "cancel"
             />}
             <FabControl 
               fType       = "button"
               fLink       = {this.props.modalSvc.smData.okText}
               fOnClick    = {this.close}
-              fButtonCSS  = "app-white"
-              fLabelCSS   = "app-bigger-font"
+              fButtonCSS  = "app-fab-sm-sq app-oval-button"
               fAria       = "Ok"
             />
           </div>

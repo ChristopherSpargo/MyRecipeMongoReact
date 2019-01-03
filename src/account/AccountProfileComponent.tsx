@@ -285,16 +285,15 @@ class ProfileUpdate extends React.Component <{
                     <FabControl 
                       fType       = "button"
                       fLabel      = "Update"
-                      fLabelCSS   = "app-primary"
                       fDisabled   = {this.selectedItem !== ''}
                       fOpen       = {true}
-                      fButtonCSS  = "app-fab-sm-sq app-bg-white mt-1"
+                      fButtonCSS  = "app-fab-sm-sq app-oval-button mt-1"
                       fDelay      = {200}
                       fOnClick    = {this.handleSubmit}
                       fAria       = "update"
                       fIcon       = "check_circle_outline"
+                      fIconColor  = "white"
                       fIconCSS    = "app-fab-icon-sm app-mt--2"
-                      fIconColor  = "app-primary"
                     />
             </div>                
           </form>

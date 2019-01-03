@@ -227,9 +227,9 @@ export class RecipeSearch extends React.Component <{
   render() {
 
     return(
-      <div>
+      // <div>
         <div 
-          className={'app-tab-container px-0 pt-2 app-bg-gwhite' + 
+          className={'app-tab-container px-0 pt-2 app-bg-white' + 
                         (this.props.searchTabOpen ? ' app-open' : '')}
         >
 
@@ -244,8 +244,8 @@ export class RecipeSearch extends React.Component <{
         
           {/* Instructional messages */}
           <div 
-            className="d-flex flex-row justify-content-center app-flex-1 
-                      app-black-text-low app-bold align-items-center mb-2 app-small-font"
+            className="d-flex flex-row justify-content-start app-flex-1 
+                      app-black-text-low app-bold align-items-center ml-2 my-2 app-small-font"
           >
             Use the fields below to narrow your search.
           </div>
@@ -254,7 +254,7 @@ export class RecipeSearch extends React.Component <{
             <div className="app-bg-white d-flex flex-column app-width-100">
 
               {/* Radio group to select data set (Personal/Shared) */}
-              <div className="d-flex flex-row app-width-98 mx-auto px-2">
+              <div className="d-flex flex-row px-2">
                 <RadioGroup
                   fTitle      = "Search In:"
                   fIcon       = {this.dataSet === 'Personal' ? 'folder' : 'folder_shared'}
@@ -273,13 +273,14 @@ export class RecipeSearch extends React.Component <{
               {/* Form for search filtering options */}
 
               <form 
+                className="app-width-98 d-flex flex-column justify-content-between"
                 id="searchForm" 
                 name="searchForm" 
                 role="form" 
                 noValidate={true}
                 onSubmit={this.handleSubmit}
               >
-                <div className="d-flex flex-column app-width-98 mx-auto px-2">
+                <div className="d-flex flex-column px-2">
 
                   {/* categories Field */}
                   <div 
@@ -362,13 +363,14 @@ export class RecipeSearch extends React.Component <{
                   fType         ="submit"
                   fLabels       ={true}
                   fSLabel       ="Search"
+                  fBgColor      ="white"
+                  fButtonCSS    ="app-oval-button"
                 />
-                                  
               </form>
             </div>
           </div>
         </div>
-      </div>
+      // </div>
     )
 
   }

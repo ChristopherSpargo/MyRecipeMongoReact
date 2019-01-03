@@ -552,11 +552,11 @@ class RecipeAccess extends React.Component <{
   render() {
     return(
       <div 
-        className={'d-flex flex-column app-central-container app-pos-relative app-fade-in' +
+        className={'d-flex flex-column app-full-frame app-bg-white app-fade-in' +
                 (this.viewOpen ? ' app-open' : '') +
                 (this.printingRecipe ? ' app-no-display' : '')}
       >
-
+      <div className="app-ht-100 app-position-relative">
         {/* Form Header */}
 
         <FormHeader       
@@ -565,7 +565,7 @@ class RecipeAccess extends React.Component <{
           headerTitle     = {this.headerTitle}
           headerTheme     = "app-recipes-header-theme"
           printMsg        = {this.printMsg}
-          showHelp        = {this.pageIsScrolled}
+          // showHelp        = {this.pageIsScrolled}
           headerClose     = {this.fakeBackButtonHit}
         />
                           
@@ -630,6 +630,7 @@ class RecipeAccess extends React.Component <{
             </div>
           </div>
         </div>
+      </div>  
       </div>
     )
   }

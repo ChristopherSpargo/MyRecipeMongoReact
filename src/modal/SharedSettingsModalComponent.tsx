@@ -232,16 +232,25 @@ class SharedSettingsModal extends React.Component<{
               <div className="d-flex flex-row justify-content-start align-items-center app-flex-1 px-2 py-1">
                 <button 
                   type="button" 
-                  className="btn app-form-image-button ml-0 mr-2" 
-                  aria-label="help"
+                  className={'btn d-flex flex-row align-items-center app-form-image-button mx-0 app-visible'} 
+                  aria-label="cancel"
                   data-toggle="tooltip" 
                   data-placement="top" 
-                  title="Help" 
+                  title="Cancel" 
                   data-delay="200"
-                >
-                  <i className="material-icons app-fab-icon-smm app-white">settings</i>
+                > 
+                  <i 
+                    className={'material-icons app-fab-icon-smm app-header-title-icon app-white'} 
+                    onClick={this.dismiss}
+                  >arrow_back
+                  </i>
                 </button>
                 <div className="app-form-title">{this.props.modalSvc.ssmData.heading}</div>
+                <div className="ml-auto">
+                  <HelpButton 
+                      fPosition="relative" 
+                  />
+                </div>
               </div>
             </div>
             <div className="app-form-theme app-all-paddings-8px">
@@ -349,12 +358,11 @@ class SharedSettingsModal extends React.Component<{
               className="d-flex flex-row justify-content-around align-items-center 
                         app-dialog-footer app-pos-relative pt-1 pb-2"
             >
-              <HelpButton/>
               <FabControl
                 fType       = "button"
                 fLink       = {this.props.modalSvc.ssmData.cancelText}
                 fOnClick    = {this.dismiss}
-                fButtonCSS  = "app-fab-sm-sq app-white"
+                fButtonCSS  = "app-fab-sm-sq app-oval-button"
                 fAria       = "cancel"
               />
               <FabControl 
@@ -362,7 +370,7 @@ class SharedSettingsModal extends React.Component<{
                 fLink       = {!this.deleteRecipe ? this.props.modalSvc.ssmData.okText : 
                                   this.props.modalSvc.ssmData.deleteText}
                 fOnClick    = {this.close}
-                fButtonCSS  = "app-fab-sm-sq app-white"
+                fButtonCSS  = "app-fab-sm-sq app-oval-button"
                 fAria       = "Ok"
               />
             </div>

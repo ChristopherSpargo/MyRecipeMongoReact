@@ -213,7 +213,7 @@ class CheckboxMenu extends React.Component<{
                     type="checkbox" 
                     disabled={!this.newCatOk() ? true : undefined} 
                     ref={input => this.newCatCheckedRef = input}
-                    className={'app-mb--2 mr-1' + (this.newCatOk() ? 'app-cursor-pointer' : 'app-cursor-default')} 
+                    className={'app-mb--2 mr-2 ' + (this.newCatOk() ? 'app-cursor-pointer' : 'app-cursor-default')} 
                     onChange={this.newCatClicked}
                   />
                   <input 
@@ -222,7 +222,7 @@ class CheckboxMenu extends React.Component<{
                     id="newCatID"
                     className="app-form-input app-catlist-menu-item"
                     ref={input => this.newCatValueRef = input}
-                    placeholder="new category"
+                    placeholder="New Category"
                     maxLength={200}
                     onBlur={this.newCatBlur}
                   />
@@ -240,7 +240,12 @@ class CheckboxMenu extends React.Component<{
               {this.selectList.map((item, i) => // items in selectList are: {id: number, name: string}
                 <div key={i} className="d-flex flex-row align-items-center">
                   <label className="app-flex-1 app-cursor-pointer mb-1">
-                    <input type="checkbox" checked={this.selectedItems[i]} onClick={this.toggleItem.bind(this, i)}/>
+                    <input  
+                      type="checkbox" 
+                      checked={this.selectedItems[i]} 
+                      onClick={this.toggleItem.bind(this, i)}
+                      className="mr-2"
+                    />
                     {item.name}
                   </label>          
                 </div>)}
@@ -250,14 +255,13 @@ class CheckboxMenu extends React.Component<{
           {/* footer with action buttons */}
           <div 
             className={`d-flex flex-row app-flex-1 justify-content-around align-items-center 
-                      app-catlist-footer-theme app-card-bottom-corners`}
+                      app-catlist-footer-theme my-1 app-card-bottom-corners`}
           >
             <FabControl 
               fType       = "button"
               fLink       = "Cancel"
               fOnClick    = {this.closeMenu}
-              fButtonCSS  = "app-white"
-              fLabelCSS   = "app-bigger-font"
+              fButtonCSS  = "py-0 app-oval-button"
               fAria       = "cancel"
             />
             <FabControl 
@@ -265,8 +269,7 @@ class CheckboxMenu extends React.Component<{
               fLink       = "Ok"
               fDisabled   = {this.selectionsAdded}
               fOnClick    = {this.addSelections}
-              fButtonCSS  = "app-white"
-              fLabelCSS   = "app-bigger-font"
+              fButtonCSS  = "py-0 app-oval-button"
               fAria       = "Save"
             />
           </div>

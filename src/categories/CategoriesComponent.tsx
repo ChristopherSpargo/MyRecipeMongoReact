@@ -270,7 +270,7 @@ class CategoriesComponent extends React.Component <{ user?: User, userSvc?: User
   render() {
     return(
       <div 
-        className={'app-central-container-sm app-fade-in' + (this.formOpen ? ' app-open' : '')}
+        className={'app-full-frame app-bg-white app-fade-in' + (this.formOpen ? ' app-open' : '')}
       >
 
         {/* Form Header */}
@@ -285,7 +285,7 @@ class CategoriesComponent extends React.Component <{ user?: User, userSvc?: User
 
         {/* Start of Form */}
 
-        <div className="app-scroll-frame-center app-card-bottom-corners app-whiteframe-2dp">
+        <div className="app-scroll-frame-center">
           <div className="app-form-theme px-0 pt-3">
             <form 
               id="categoryForm" 
@@ -350,14 +350,14 @@ class CategoriesComponent extends React.Component <{ user?: User, userSvc?: User
                {/* Actions Area */}
               <div 
                 className="d-flex flex-row justify-content-center align-items-center 
-                  app-pos-relative app-bg-primary pb-2" 
+                  app-pos-relative pb-2" 
                 id="actions"
               >
                 <FabControl
                   fType       = "button"
                   fLink       = "Done"
                   fOnClick    = {this.closeForm}
-                  fButtonCSS  = "app-fab-sm-sq app-white"
+                  fButtonCSS  = "app-fab-sm-sq app-oval-button"
                   fAria       = "done"
                 />
               </div>

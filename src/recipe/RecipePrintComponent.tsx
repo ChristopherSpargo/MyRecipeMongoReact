@@ -1,6 +1,6 @@
 'use strict'
 import * as React from 'react';
-import { observable } from 'mobx';
+import { observable, action } from 'mobx';
 import { observer, inject } from 'mobx-react';
 
 import { UtilSvc } from '../utilities/UtilSvc';
@@ -45,7 +45,6 @@ class RecipePrint extends React.Component <{
     rMorePics    : PicItem[] = [];
     rCreatedOn   : string;
 
-  @observable requestStatus  : { [key: string]: any } = {};
   @observable headerTitle    : string  = this.rTitle;
   @observable recipeReady    : boolean = false;
   @observable showPics       : boolean = false; // true if show full-size versions of all images at end of print
@@ -62,7 +61,7 @@ class RecipePrint extends React.Component <{
 
   setMessageResponders() : void {
     if (window.matchMedia) {
-      this.printerMediaQuery = window.matchMedia('print');
+      this.setPrinterMediaQuery(window.matchMedia('print'));
       this.printerMediaQuery.addListener(this.mediaPrintListener);
     }
     document.addEventListener('extraImagesReady', this.setExtraImages);
@@ -101,6 +100,11 @@ class RecipePrint extends React.Component <{
     }
   }
 
+  @action
+  setPrinterMediaQuery = (q: any) => {
+    this.printerMediaQuery = q;
+  }
+
   // print the current recipe
   printRecipe = () => {
     this.showPrintView();
@@ -114,29 +118,37 @@ class RecipePrint extends React.Component <{
   }
 
   // turn on display of this module's template and turn off VIEW module's template
+  @action
   showPrintView = () => {
     this.printActive = true;
     this.emit('printBegin')
   }
 
   // turn off display of this module's template and turn on VIEW module's template
+  @action
   printDone = () => {
     this.printActive = false;
     this.emit('printDone')
  }
 
+ @action
+ setRecipeReady = (status: boolean) => {
+   this.recipeReady = status;
+ }
+
   // event listener for 'newRecipeSelection' event
   // populate the view with data from the current recipe
+  @action
   newViewReady = () => {
     this.currentRecipe.viewScrollPosition = 0;
     this.setItemFields(this.currentRecipe.recipe.data);
     this.headerTitle = this.rTitle;
-    this.recipeReady = true;
+    this.setRecipeReady(true);
   }
 
   // eventt listener for 'noRecipeSelection' event
   noRecipeSelection = () => {
-    this.recipeReady = false;
+    this.setRecipeReady(false);
     this.currentRecipe.viewScrollPosition = 0;
   }
 

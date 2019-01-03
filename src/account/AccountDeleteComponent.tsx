@@ -207,9 +207,7 @@ class AccountDelete extends React.Component <{
                 fIcon         = "remove_circle_outline"
                 fType         = "submit"
                 fBgColor      = "app-bg-white"
-                fButtonCSS    = "app-bg-white"
-                fIconColor    = "app-primary"
-                fLabelCSS     = "app-primary"
+                fButtonCSS    = "app-oval-button"
                 fLabels       = {true}
                 fSLabel       = "Delete"
               />

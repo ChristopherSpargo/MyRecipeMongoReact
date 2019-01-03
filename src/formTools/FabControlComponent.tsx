@@ -85,8 +85,8 @@ class FabControl extends React.Component<{
           <button 
             id={fId}
             type={fType}  
-            className={'btn app-fab-button ' + fButtonCSS + (this.clicked ? ' app-fab-click' : '') +
-                              (fOpen ? ' app-open' : '')}
+            className={'btn app-fab-button app-link-active d-flex flex-column justify-content-center ' + 
+                        fButtonCSS + (this.clicked ? ' app-fab-click' : '') + (fOpen ? ' app-open' : '')}
             aria-label={fAria}
             disabled={fDisabled}
             data-toggle={fTip ? 'tooltip' : ''} 
@@ -108,9 +108,10 @@ class FabControl extends React.Component<{
         <button 
           type={fType}  
           id={fId}
-          className={'btn btn-sm app-link-btn app-action-btn app-link-active ' +
-                            fButtonCSS + (this.clicked ? ' app-fab-click' : '') +
-                            (fOpen ? ' app-open' : '')} 
+          className={
+            'btn btn-sm app-link-btn app-action-btn app-link-active d-flex flex-column justify-content-center ' +
+            fButtonCSS + (this.clicked ? ' app-fab-click' : '') +
+            (fOpen ? ' app-open' : '')} 
           aria-label={fAria}
           disabled={fDisabled}
           onClick={this.fabClicked}
@@ -131,9 +132,10 @@ class FabControl extends React.Component<{
         <button 
           type={fType}  
           id={fId}
-          className={'btn btn-sm app-link-btn app-action-btn ' +
-                            fButtonCSS + (this.clicked ? ' app-fab-click' : '') +
-                            (fOpen ? ' app-open' : '')} 
+          className={
+            'btn btn-sm app-link-btn app-action-btn app-link-active d-flex flex-column justify-content-center ' +
+            fButtonCSS + (this.clicked ? ' app-fab-click' : '') +
+            (fOpen ? ' app-open' : '')} 
           aria-label={fAria}
           disabled={fDisabled}
           onClick={this.fabClicked}

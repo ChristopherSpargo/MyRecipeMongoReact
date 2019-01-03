@@ -199,9 +199,7 @@ class EmailChange extends React.Component <{
               <UpdateActions
                 fType         = "submit"
                 fBgColor      = "app-bg-white"
-                fButtonCSS    = "app-bg-white"
-                fIconColor    = "app-primary"
-                fLabelCSS     = "app-primary"
+                fButtonCSS    = "app-oval-button"
                 fLabels       = {true}
                 fSLabel       = "Change"
               />
