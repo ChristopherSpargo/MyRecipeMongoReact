@@ -25,7 +25,7 @@ class AboutEnterRecipes extends React.Component {
         <AboutHeading fIcon="assessment" fText="Categories" fIconColor="app-active-input-icon-color"/>
         &nbsp;&nbsp;Here you assign categories to the recipe. Categories are one of the main ways to
         organize recipes. You can create as many different categories as you like (see help when using the 
-        <b>Categories</b> feature).<br/>
+        <b> Categories</b> feature).<br/>
         &nbsp;&nbsp;Click the
         <AboutTextIcon fIcon="add_circle" fFab={true} fColor="app-primary"/>
         button to display a menu of categories. A <b>new category</b>

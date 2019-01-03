@@ -280,7 +280,10 @@ class SignInComponent extends React.Component< { user?: User, utilSvc?: UtilSvc,
             {/* Start of Form */}
           
             <div className=" app-scroll-frame-center app-card-bottom-corners app-whiteframe-2dp">
-              <div className="app-form-theme px-0 pt-3">
+              <div className="app-form-theme px-0 pt-2">
+                <div className="app-page-label pl-2">
+                  Sign In
+                </div>
                 <form 
                   name      = "loginForm" 
                   id        = "loginForm" 
@@ -447,25 +450,19 @@ class SignInComponent extends React.Component< { user?: User, utilSvc?: UtilSvc,
                       fAria="sign in" 
                       fType="submit"
                       fButtonCSS="app-fab-sm-sq app-oval-button" 
-                      fIconColor="app-white"
-                      fLabel={this.createAccount ? 'Create Account' : 'Sign In'}
-                      fIcon={this.createAccount ? 'add_circle_outline' : 'check_circle_outline'}
+                      fLink={this.createAccount ? 'Create Account' : 'Sign In'}
                     />}
                     {this.newAccount && 
                     <FabControl 
                       fAria="sign in" 
-                      fLabel="Continue"
+                      fLink="Continue"
                       fButtonCSS="app-fab-sm-sq app-oval-button"
-                      fIcon="arrow_forward" 
-                      fIconColor="app-white"
                     />}
                     {this.wrongPassword() && 
                     <FabControl  
                       fAria="forgot password"
-                      fLabel="Reset Password"
+                      fLink="Reset Password"
                       fButtonCSS="app-fab-sm-sq app-oval-button"
-                      fIcon="sentiment_dissatisfied" 
-                      fIconColor="app-white"
                       fType="button" 
                       fOnClick={this.requestPasswordReset}
                     />}

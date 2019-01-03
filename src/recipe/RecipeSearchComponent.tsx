@@ -233,6 +233,9 @@ export class RecipeSearch extends React.Component <{
                         (this.props.searchTabOpen ? ' app-open' : '')}
         >
 
+          <div className="app-page-label">
+            Recipe Search
+          </div>
           {/* define a component to add recipe categoreis */}
           <CheckboxMenu 
             fTitle       = "Recipe Categories"

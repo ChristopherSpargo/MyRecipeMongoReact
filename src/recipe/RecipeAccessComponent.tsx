@@ -565,7 +565,6 @@ class RecipeAccess extends React.Component <{
           headerTitle     = {this.headerTitle}
           headerTheme     = "app-recipes-header-theme"
           printMsg        = {this.printMsg}
-          // showHelp        = {this.pageIsScrolled}
           headerClose     = {this.fakeBackButtonHit}
         />
                           

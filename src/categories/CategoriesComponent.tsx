@@ -114,6 +114,20 @@ class CategoriesComponent extends React.Component <{ user?: User, userSvc?: User
         action = 'Remove';
       }
     }
+    if (action === 'Remove') {
+      // confirm deletion with user first
+      this.props.utilSvc.getConfirmation('CategoryDelete', 'Delete Category', 'delete_forever',
+              'Confirm delete of category \'' + this.listItem.name + '\'', 'Delete')
+      .then( (deleteIt) => {
+        this.finishRequest(form, msgId, msg, action);
+      })
+      .catch( (dontDelete) => {} )
+    } else {
+      this.finishRequest(form, msgId, msg, action);
+    }
+  }
+
+  finishRequest = (form: any, msgId: string, msg: string, action: string) => {
     this.props.utilSvc.displayWorkingMessage(true);
     this.props.recipeSvc.updateList(this.tableName, this.listItem, action, 
                                     this.props.user.authData.uid)   // send the update
@@ -136,7 +150,7 @@ class CategoriesComponent extends React.Component <{ user?: User, userSvc?: User
         this.resetForm(form);
         this.props.utilSvc.displayWorkingMessage(false);
       });
-  }
+}
 
   // if the action was 'remove' then see if any recipes contain the listItem and adjust
   // the recipe accordingly
@@ -287,6 +301,9 @@ class CategoriesComponent extends React.Component <{ user?: User, userSvc?: User
 
         <div className="app-scroll-frame-center">
           <div className="app-form-theme px-0 pt-3">
+            <div className="app-page-label pl-1">
+              Manage Categories
+            </div>
             <form 
               id="categoryForm" 
               name="categoryForm" 
@@ -300,7 +317,7 @@ class CategoriesComponent extends React.Component <{ user?: User, userSvc?: User
               {(this.selectedItem === '' ) && 
               <div 
                 className="d-flex flex-row justify-content-start app-flex-1 align-items-center
-                                                      app-black-text-low app-bold mb-2 app-smaller-font"
+                                                      app-black-text-low app-bold mb-2 ml-1 app-smaller-font"
               >
                 Select from the list to edit/create {this.itemReference} {this.listName}
               </div>}

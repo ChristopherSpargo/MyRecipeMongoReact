@@ -30,14 +30,14 @@ class UpdateActions extends React.Component<{
   render() {
     const defBgColor = this.props.fColorSwap ? 'app-bg-white' : 'app-bg-primary';
     const defTextColor = this.props.fColorSwap ? 'app-primary' : 'app-white';
-    const defaultIcon = this.props.fAddCheck ? 'add_circle_outline' : 'check_circle_outline';
+    // const defaultIcon = this.props.fAddCheck ? 'add_circle_outline' : 'check_circle_outline';
     const bType     = this.props.fType    || 'submit';
     const aLabel    = this.props.fALabel  || 'Add';
     const sLabel    = this.props.fSLabel  || 'Save';
     const rLabel    = this.props.fRLabel  || 'Remove';
     const bgColor   = this.props.fBgColor || defBgColor;
     const btnCSS    = this.props.fButtonCSS + ' app-fab-sm-sq';
-    const iconColor = this.props.fIconColor || defTextColor;
+    // const iconColor = this.props.fIconColor || defTextColor;
     const labelCSS  = this.props.fLabelCSS || defTextColor;
 
 
@@ -53,11 +53,9 @@ class UpdateActions extends React.Component<{
           fType       ={bType}
           fDisabled   ={this.props.fDisabled} 
           fOnClick    ={this.props.fOnSave}
-          fLabel      ={this.props.fLabels ? (this.props.fAddCheck ? aLabel : sLabel) : ''} 
+          fLink       ={this.props.fLabels ? (this.props.fAddCheck ? aLabel : sLabel) : ''} 
           fButtonCSS  ={btnCSS + (this.props.fDeleteCheck ? ' mr-4' : '')}
-          fIconColor  ={iconColor} 
           fLabelCSS   ={labelCSS}
-          fIcon       ={this.props.fIcon || defaultIcon}
         />}
         {this.props.fDeleteCheck &&
         <FabControl 
@@ -66,10 +64,8 @@ class UpdateActions extends React.Component<{
           fType       ="button"
           fButtonCSS  ={btnCSS} 
           fLabelCSS   ={labelCSS}
-          fLabel      ={this.props.fLabels ? rLabel : ''} 
+          fLink       ={this.props.fLabels ? rLabel : ''} 
           fOnClick    ={this.props.fOnDelete}
-          fIcon       ={this.props.fIcon || 'remove_circle_outline'} 
-          fIconColor  ={iconColor}
         />}
       </div>
     )

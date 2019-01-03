@@ -308,47 +308,41 @@ class ListItemField extends React.Component<{
               <div className="app-smaller-font mb-0">
                 <FabControl
                   fType       = "submit"
-                  fLabel      = "Save"
+                  fLink       = "Save"
                   fLabelCSS   = "app-white"
                   fOpen       = {true}
                   fButtonCSS  = "app-fab-sm-sq app-oval-button mr-1 mb-1"
                   fDelay      = {200}
                   fAria       = "add"
-                  fIcon       = "check_circle_outline"
-                  fIconCSS    = "app-fab-icon-sm"
-                  fIconColor  = "app-white"
+                  // fIcon       = "check_circle_outline"
+                  // fIconCSS    = "app-fab-icon-sm"
+                  // fIconColor  = "app-white"
                 />
               </div>
               {(this.fieldValue !== '999') && 
               <div className="app-smaller-font mb-0">
                 <FabControl
                   fType       = "button"
-                  fLabel      = "Remove"
+                  fLink       = "Remove"
                   fLabelCSS   = "app-white"
                   fOpen       = {true}
                   fButtonCSS  = "app-fab-sm-sq app-oval-button mr-1 mb-1"
                   fDelay      = {200}
                   fOnClick    = {this.deleteItem}
                   fAria       = "remove"
-                  fIcon       = "remove_circle_outline"
-                  fIconCSS    = "app-fab-icon-sm"
-                  fIconColor  = "app-white"
                 />
               </div>}
               <div className="app-smaller-font mb-0"> 
                 <FabControl
                   fId         = {this.props.fNewName + 'Cancel'}
                   fType       = "button"
-                  fLabel      = "Cancel"
+                  fLink       = "Cancel"
                   fLabelCSS   = "app-white"
                   fOpen       = {true}
                   fButtonCSS  = "app-fab-sm-sq app-oval-button mb-1"
                   fDelay      = {200}
                   fOnClick    = {this.cancelEdit}
                   fAria       = "cancel"
-                  fIcon       = "highlight_off"
-                  fIconCSS    = "app-fab-icon-sm"
-                  fIconColor  = "app-white"
                 />
               </div>
             </div>}
@@ -357,15 +351,12 @@ class ListItemField extends React.Component<{
               <div className="app-small-list-field-cancel-fab mb-0">
                 <FabControl 
                   fType       = "button"
-                  fLabel      = "Cancel"
+                  fLink       = "Cancel"
                   fOpen       = {true}
                   fButtonCSS  = "app-fab-xsm-sq app-oval-button mb-1"
                   fDelay      = {1}
                   fOnClick    = {this.cancelEdit}
                   fAria       = "cancel"
-                  fIcon       = "highlight_off"
-                  fIconCSS    = "app-icon-xsm"
-                  fIconColor  = "app-brite-orange"
                 />
               </div>
             </div>}

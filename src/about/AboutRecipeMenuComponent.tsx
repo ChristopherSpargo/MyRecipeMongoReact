@@ -63,7 +63,7 @@ class AboutRecipeMenu extends React.Component {
         
         <AboutHeading fIcon="warning" fText="Tips and Warnings" fIconColor="app-checkbox" fDivider={true}/>
         &nbsp;&nbsp;Once a recipe is removed it cannot be retrieved. Also, deleting a recipe that has been shared
-        <b>does not</b> delete the Shared copy.<br/>  
+        <b> does not</b> delete the Shared copy.<br/>  
         &nbsp;&nbsp;If you want to delete the Shared copy of a recipe you must do so first using ths
         Shared Recipe Settings form accessed via the
         <AboutTextIcon 

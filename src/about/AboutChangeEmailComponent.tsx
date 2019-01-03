@@ -23,7 +23,7 @@ class AboutChangeEmail extends React.Component {
         <AboutHeading fIcon="mail_outline" fText="New Email Address" fIconColor="app-active-input-icon-color"/>
         &nbsp;&nbsp;Enter the new email address to be associated with this account.
 
-        <AboutHeading fIcon="check_circle_outline" fButton="Change" fSwapColors={true}/>
+        <AboutHeading fButton="Change"/>
         &nbsp;&nbsp;Press the Change button to submit your change request.  If successful, you will
         receive a brief notification and the user status in the <b>About Menu</b> will reflect
         the new email address.

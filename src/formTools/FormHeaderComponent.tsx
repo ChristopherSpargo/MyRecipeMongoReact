@@ -115,7 +115,7 @@ class FormHeader extends React.Component<{
             {(headerClose && (headerType !== 'simple')) && 
             <div className="d-flex flex-row justify-content-end align-items-end app-flex-1">
               <div 
-                className={`d-flex flex-row justify-content-center 
+                className={`d-flex flex-row justify-content-end 
                               align-items-center app-scroll-form-header-end-ctrls app-help-top`}
               >
                 {printMsg && 

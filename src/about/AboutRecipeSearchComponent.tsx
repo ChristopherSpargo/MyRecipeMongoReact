@@ -15,7 +15,7 @@ class AboutRecipeSearch extends React.Component {
         The fields and buttons are:
 
         <AboutHeading fIcon="folder" fText="Search In" fIconColor="app-active-input-icon-color"/>
-        &nbsp;&nbsp;Here you specify which collection of recipes you want to search.<br/> <b>My Recipes</b> 
+        &nbsp;&nbsp;Here you specify which collection of recipes you want to search.<br/> <b>My Recipes </b> 
          are just the recipes you have added yourself.<br/>
         <b>Shared Recipes</b> are recipes that you have shared or others have shared that you have access to.<br/>
         &nbsp;&nbsp;These collections must be searched separately. The internal values of the Categories in
@@ -60,7 +60,7 @@ class AboutRecipeSearch extends React.Component {
         &nbsp;&nbsp;Press this button to submit your search request. 
         If successful, the <b>Recipes</b> tab will be displayed.
         If no matches meeting the parameters are found, a message to that effect will be given and the 
-        <b>Recipe Search</b> form will remain displayed.
+        <b> Recipe Search</b> form will remain displayed.
         
         <AboutHeading fIcon="warning" fText="Tips and Warnings" fIconColor="app-checkbox" fDivider={true}/>
         &nbsp;&nbsp;If a search continues to find no matches, make sure the parameters you are specifying 

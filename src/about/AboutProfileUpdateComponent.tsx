@@ -24,7 +24,7 @@ class AboutProfileUpdate extends React.Component {
         If you don't set an authorzie users list on a recipe
         you share, all MyRecipeMongo users will be able to view that recipe.
 
-        <AboutHeading fIcon="check_circle_outline" fButton="Update" fSwapColors={true}/>
+        <AboutHeading fButton="Update"/>
         &nbsp;&nbsp;Press the Update button to save your authorized users list.  If successful, you will
         receive a brief notification.
       </div>

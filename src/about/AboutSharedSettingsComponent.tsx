@@ -20,10 +20,10 @@ class AboutSharedSettings extends React.Component {
         &nbsp;&nbsp;This is an optional list that you can create to control sees the shared version of this recipe.
         The list
         contains email addresses associated with the accounts of other
-        <i><b>MyRecipeMongo</b></i> users that you want to share this recipe with.
+        <i><b> MyRecipeMongo</b></i> users that you want to share this recipe with.
         Leave this list empty to share with all users.<br />
         &nbsp;&nbsp;From the drop-down list, select an email address to change/remove or select 
-        <b>New Authorized User</b> to add a new email address to the list.
+        <b> New Authorized User</b> to add a new email address to the list.
 
         <AboutHeading fButton="Cancel"/>
         &nbsp;&nbsp;This button cancels making changes to the Shared Settings.
@@ -31,7 +31,7 @@ class AboutSharedSettings extends React.Component {
         <AboutHeading fButton="Save"/>
         &nbsp;&nbsp;This button saves changes to the Shared Settings.
 
-        <AboutHeading fButton="Make Private"/>
+        <AboutHeading fButton="Stop Sharing"/>
         &nbsp;&nbsp;This button cancels sharing the recipe.
       </div>
       )

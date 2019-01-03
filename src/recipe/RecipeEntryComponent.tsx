@@ -595,19 +595,15 @@ makeMainImage = (i: number) => {
         
             {/* Instructional messages */}
             {this.createNew &&
-            <div 
-              className={`d-flex flex-row justify-content-start app-flex-1 
-                          app-black-text-low app-bold align-items-center my-2 ml-2 app-small-font`}
-            >
-              Creating a new recipe.
-            </div>}
+              <div className="app-page-label pl-1">
+                Create Recipe
+              </div>
+            }
             {!this.createNew &&
-            <div 
-              className={`d-flex flex-row justify-content-start app-flex-1 
-                          app-black-text-low app-bold align-items-center my-2 ml-2 app-small-font`}
-            >
-              Updating an existing recipe.
-            </div>}
+              <div className="app-page-label pl-1">
+                Edit Recipe
+              </div>
+            }
 
             {/* Start of Form */}
             <div className="app-frame px-0">
@@ -905,26 +901,20 @@ makeMainImage = (i: number) => {
                 >
                   <FabControl
                     fType       = "submit"
-                    fLabel      = "Save"
+                    fLink       = "Save"
                     fOpen       = {true}
                     fButtonCSS  = "app-fab-sm-sq app-oval-button mr-4"
                     fDelay      = {200}
                     fAria       = "add"
-                    fIcon       = "check_circle_outline"
-                    fIconCSS    = "app-fab-icon-sm"
-                    fIconColor  = "app-white"
                   />
                   <FabControl 
                     fType       = "button"
-                    fLabel      = {this.createNew ? 'Clear' : 'Cancel'}
+                    fLink      = {this.createNew ? 'Clear' : 'Cancel'}
                     fOpen       = {true}
                     fButtonCSS  = "app-fab-sm-sq app-oval-button"
                     fDelay      = {200}
                     fOnClick    = {this.resetForm}
                     fAria       = "cancel"
-                    fIcon       = "highlight_off"
-                    fIconCSS    = "app-fab-icon-sm"
-                    fIconColor  = "app-white"
                   />
                 </div>
               </form>

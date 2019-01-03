@@ -23,7 +23,7 @@ class AboutChangepassword extends React.Component {
         <AboutHeading fIcon="lock_outline" fText="New Password" fIconColor="app-active-input-icon-color"/>
         &nbsp;&nbsp;Enter the new password to be associated with this account.
 
-        <AboutHeading fIcon="check_circle_outline" fButton="Change" fSwapColors={true}/>
+        <AboutHeading fButton="Change"/>
         &nbsp;&nbsp;Press the Change button to submit your change request.  If successful, you will
         receive a brief notification.
       </div>

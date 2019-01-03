@@ -28,7 +28,7 @@ class AboutHeading extends React.Component<{
         {this.props.fButton &&
         <button className={'btn btn-sm app-about-heading-btn py-0' + bgColor + fButtonCSS} >
           <div className="d-flex flex-row justify-content-center align-items-center app-bigger-font">
-            <i className={'material-icons app-fab-icon-sm' + textColor}>{this.props.fIcon}</i> 
+            {/* <i className={'material-icons app-fab-icon-sm' + textColor}>{this.props.fIcon}</i>  */}
             <div className={'mx-1' + textColor}>{this.props.fButton}</div>
           </div>       
         </button>}

@@ -30,7 +30,6 @@ class AboutMyRecipeMongo extends React.Component {
           &nbsp;&nbsp;&nbsp;&nbsp;- Enter the same password again<br/>
           &nbsp;&nbsp;&nbsp;&nbsp;- Finally, click
           <AboutTextIcon 
-            fIcon="add_circle_outline" 
             fLabel="Create Account" 
             fSize="S" 
             fColor="app-white" 
@@ -74,7 +73,6 @@ class AboutMyRecipeMongo extends React.Component {
           This will open the Recipe Access Area with the <b>SEARCH</b> tab active.<br/>
           &nbsp;&nbsp;Fill in any search criteria and click
           <AboutTextIcon 
-            fIcon="check_circle_outline" 
             fLabel="Search" 
             fSize="S" 
             fColor="app-white" 

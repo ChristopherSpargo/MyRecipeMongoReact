@@ -145,6 +145,9 @@ export class AccountAccess extends React.Component <{
 
           {/* Main display area */}
           <div className="app-form-theme mx-2 my-2">
+            <div className="app-page-label">
+              Manage Account
+            </div>
             <FormSection 
               fLabel="Update Profile" 
               fOpenFlag={this.profileOpen} 

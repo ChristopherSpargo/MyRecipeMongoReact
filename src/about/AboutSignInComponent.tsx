@@ -32,13 +32,13 @@ class AboutSignIn extends React.Component {
           &nbsp;&nbsp;Check this box to have your Email and Password automatically filled in for
           you when you log in.
 
-        <AboutHeading fIcon="check_circle_outline" fButton="Sign In"/>
+        <AboutHeading fButton="Sign In"/>
           &nbsp;&nbsp;Press this button to submit your information for verification.  If successful, you will
           receive a brief notification and the user icon at the top of the page
-          will become solid. Also, the user status on the <b>About Menu</b>
+          will become solid. Also, the user status on the <b>About Menu </b>
           will show your email address.
 
-        <AboutHeading fIcon="sentiment_dissatisfied" fButton="Reset Password"/>
+        <AboutHeading fButton="Reset Password"/>
           &nbsp;&nbsp;If the password entered is incorrect, this button will appear. Pressing this button will give
           you the option to receive an email containing a temporary password that can be used to sign in.<br />
           &nbsp;&nbsp;To retry your sign in, re-enter your password and press the Sign In button.

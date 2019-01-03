@@ -20,7 +20,7 @@ class AboutAccountDelete extends React.Component {
       <AboutHeading fIcon="lock_outline" fText="Password" fIconColor="app-active-input-icon-color"/>
       &nbsp;&nbsp;Enter the password associated with this account.
   
-      <AboutHeading fIcon="remove_circle_outline" fButton="Delete" fSwapColors={true}/>
+      <AboutHeading fButton="Delete"/>
       &nbsp;&nbsp;Press the Delete button to submit your delete request.  You will immediately be prompted for
       confirmation of this action.  Press <b>Delete Account</b> to continue. If the delete is successful, 
       you will receive a brief notification and the user icon at the top of the page

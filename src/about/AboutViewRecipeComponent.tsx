@@ -14,7 +14,6 @@ class AboutViewRecipe extends React.Component {
         be sure to click
         <AboutTextIcon 
           fLabel="Save" 
-          fIcon="check_circle_outline"
           fSize="L" 
           fColor="app-white" 
           fLabelCSS="app-white" 
