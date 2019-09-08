@@ -780,6 +780,8 @@ z-index: -5!important;}
       color: rgba(0,0,0,.87) !important;
       padding-top: calc(1.3em - 2px);
       max-height: 50px;
+      background-color: white;
+      overflow: hidden;
       transition: max-height .4s, color .4s ease-in-out;
       position: relative;}
       @media ($lg-screen) {

@@ -317,17 +317,14 @@ class CategoriesComponent extends React.Component <{ user?: User, userSvc?: User
               {(this.selectedItem === '' ) && 
               <div 
                 className="d-flex flex-row justify-content-start app-flex-1 align-items-center
-                                                      app-black-text-low app-bold mb-2 ml-1 app-smaller-font"
+                                                      app-black-text-low app-bold mb-1 ml-1 app-smaller-font"
               >
                 Select from the list to edit/create {this.itemReference} {this.listName}
               </div>}
               {(this.selectedItem !== '' ) && 
               <div 
-                className="d-flex flex-row justify-content-start app-flex-1 align-items-center 
-                                                      app-black-text-low app-bold mb-2 app-smaller-font"
-              >
-                Now edit and save or remove this {this.listName}
-              </div>}
+                className="mb-4"
+              />}
 
                 {/* Item Name Field */}
                 <ListItemField 
