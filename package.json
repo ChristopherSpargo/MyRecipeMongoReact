@@ -7,7 +7,7 @@
     "@uirouter/react": "^0.6.2",
     "@xkeshi/image-compressor": "^0.5.3",
     "firebase": "^5.5.2",
-    "gulp": "^3.9.1",
+    "gulp": "^4.0.2",
     "mobx": "^4.1.0",
     "mobx-react": "^5.0.0",
     "react": "^16.2.0",
